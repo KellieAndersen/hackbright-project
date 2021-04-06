@@ -27,8 +27,7 @@ class Recipes(db.Model):
 
     def __repr__(self):
         """Show info about recipe"""
-        return f'< The recipe is {self.recipe_name}, 
-        from the kitchen of {self.originator}, recipe_id {self.recipe_id}>'
+        return f'< The recipe is {self.recipe_name}, from the kitchen of {self.originator}, recipe_id {self.recipe_id}>'
 
 
 class Ratings(db.Model):
@@ -36,7 +35,7 @@ class Ratings(db.Model):
 
     __tablename__ = 'rating'
 
-    rating_id = db.Coloumn(db.Integer,
+    rating_id = db.Column(db.Integer,
                         primary_key = True,
                         autoincrement = True, )
     rating = db.Column(db.Integer,)
@@ -76,8 +75,7 @@ class Tag_Recipe_Relation(db.Model):
                             db.ForeignKey('recipe_tags.r_tag_id'), )
 
     def __repr__(self):
-        return f'<tag-recipe-relationship id {self.tr_relation_id} is related to 
-        recipe_id {self.recipe_id} and recipe-tag id {self.r_tag_id}>'
+        return f'<tag-recipe-relationship id {self.tr_relation_id} is related to recipe_id {self.recipe_id} and recipe-tag id {self.r_tag_id}>'
 
 class Recipe_Tags(db.Model):
     """Tags to further identify recipes for the user"""
@@ -108,8 +106,7 @@ class Recipe_Ingredient_Relation(db.Model):
                             db.ForeignKey('ingredients.ingredient_id'), )
     
     def __repr__(self):
-        return f'<ingredient-recipe-relationship id {self.ri_relation_id} is related to 
-        recipe_id {self.recipe_id} and ingredient id {self.ingredient_id}>'
+        return f'<ingredient-recipe-relationship id {self.ri_relation_id} is related to recipe_id {self.recipe_id} and ingredient id {self.ingredient_id}>'
 
 
 class Ingredients(db.Model):
@@ -119,7 +116,7 @@ class Ingredients(db.Model):
 
     ingredient_id = db.Column(db.Integer,
                             primary_key = True,
-                            autoicrement = True, )
+                            autoincrement = True, )
     ingredient_name = db.Column(db.String,
                                 unique = True,
                                 nullable = False, )  #again, not sure if this should be unique
@@ -141,8 +138,7 @@ class Tag_Ingredient_Relation(db.Model):
                                 db.ForeignKey('ingredient_tags.i_tag_id'), )
     
     def __repr__(self):
-        return f'<tag-ingredient-relationship id {self.ti_relation_id} is
-         relates to ingredient_id {self.ingredient_id} and ingredient-tag id {self.i_tag_id}>'
+        return f'<tag-ingredient-relationship id {self.ti_relation_id} is relates to ingredient_id {self.ingredient_id} and ingredient-tag id {self.i_tag_id}>'
 
 
 class Ingredient_Tags(db.Model):
