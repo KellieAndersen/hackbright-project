@@ -20,6 +20,11 @@ class Recipes(db.Model):
                             nullable = False, )
     directions = db.Column(db.Text, )
 
+    ingredients = db.relationship('Ingredients', backref = 'recipes')
+    rating = db.relationship('Ratings', backref = 'recipes')
+    notes = db.relationship('Notes', backref = 'recipes')
+    recipe_tag = db.relationship('Recipe_Tags', backref = 'recipes') ##
+
     def __repr__(self):
         """Show info about recipe"""
         return f'< The recipe is {self.recipe_name}, 
@@ -39,7 +44,7 @@ class Ratings(db.Model):
                         db.ForeignKey('recipes.recipe_id'), )
 
     def __repr__(self):
-        return f'<recipe_id {self.recipe_id} has a rating of {rating}>'
+        return f'<recipe_id {self.recipe_id} has a rating of {self.rating}>'
 
     
 class Notes(db.Model):
@@ -116,9 +121,10 @@ class Ingredients(db.Model):
                             primary_key = True,
                             autoicrement = True, )
     ingredient_name = db.Column(db.String,
-                                unique = True, )  #again, not sure if this should be unique
+                                unique = True,
+                                nullable = False, )  #again, not sure if this should be unique
     def __repr__(self):
-        return f'<ingredient_id {self.ingredient_id} is {ingredient_name}>'
+        return f'<ingredient_id {self.ingredient_id} is {self.ingredient_name}>'
 
 
 class Tag_Ingredient_Relation(db.Model):
@@ -148,7 +154,7 @@ class Ingredient_Tags(db.Model):
     i_tag_name = db.Column(db.String, )
 
     def __repr__(self):
-        return f'<ingredient tag id {i_tag_id} is {i_tag_name}>'
+        return f'<ingredient tag id {self.i_tag_id} is {self.i_tag_name}>'
     
 
 
