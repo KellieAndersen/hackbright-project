@@ -59,18 +59,68 @@ class Tag_Recipe_Relation(db.Model):
                             autoincrement = True, )
     recipe_id = db.Column(db.Integer,
                             db.ForeignKey('recipes.recipe_id'), )
-    tag_id = db.Column(db.Integer,
-                            db.ForeignKey('recipe_tags.tag_id'), )
+    r_tag_id = db.Column(db.Integer,
+                            db.ForeignKey('recipe_tags.r_tag_id'), )
 
 class Recipe_Tags(db.Model):
     """Tags to further identify recipes for the user"""
 
     __tablename__ = 'recipe_tags'
 
-    tag_id = db.Column(db.Integer,
+    r_tag_id = db.Column(db.Integer,
                         primary_key = True,
                         autoincrement = True, )
-    tag_name = db.Column(db.String,
-                        unique = True, )
+    r_tag_name = db.Column(db.String,
+                        unique = True, ) #not sure if tag should be unique, but probably
 
+
+class Recipe_Ingredient_Relation(db.Model):
+    """Relationship table for recipes and ingredients"""
+
+    __tablename__ = 'recipe_ing_relate'
+
+    ri_relation_id = db.Column(db.Integer,
+                                primary_key = True,
+                                autoincrement = True, )
+    recipe_id = db.Column(db.Integer, 
+                            db.ForeignKey('recipes.recipe_id'), )
+    ingredient_id = db.Column(db.Integer,
+                            db.ForeignKey('ingredients.ingredient_id'), )
+
+
+class Ingredients(db.Model):
+    """Ingredients used for recipes"""
+
+    __tablename__ = 'ingredients'
+
+    ingredient_id = db.Column(db.Integer,
+                            primary_key = True,
+                            autoicrement = True, )
+    ingredient_name = db.Column(db.String,
+                                unique = True, )  #again, not sure if this should be unique
+
+
+class Tag_Ingredient_Relation(db.Model):
+    """Relationship table for ingredient tags and ingredients"""
+
+    __tablename__ = 'tag_ing_relate'
+
+    ti_relation_id = db.Column(db.Integer,
+                                primary_key = True,
+                                autoincrement = True, )
+    ingredient_id = db.Column(db.Integer,
+                                db.ForeignKey('ingredients.ingredient_id'), )
+    i_tag_id = db.Column(db.Integer,
+                                db.ForeignKey('ingredient_tags.i_tag_id'), )
+
+
+class Ingredient_Tags(db.Model):
+    """Tags to further identify ingredients for the user"""
+
+    i_tag_id = db.Column(db.Integer,
+                        primary_key = True,
+                        autoincrement = True, )
+    i_tag_name = db.Column(db.String, )
+    
+    
 
