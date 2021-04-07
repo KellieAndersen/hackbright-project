@@ -20,10 +20,10 @@ class Recipes(db.Model):
                             nullable = False, )
     directions = db.Column(db.Text, )
 
-    ingredients = db.relationship('Ingredients', backref = 'recipes')
     rating = db.relationship('Ratings', backref = 'recipes')
     notes = db.relationship('Notes', backref = 'recipes')
-    recipe_tag = db.relationship('Recipe_Tags', backref = 'recipes') ##
+    ingredients = db.relationship('Ingredients', secondary = 'recipe_ing_relate', backref = 'recipes')
+    tags = db.relationship('Recipe_Tags', secondary = 'tag_recipe_relation', backref = 'recipes')
 
     def __repr__(self):
         """Show info about recipe"""
@@ -74,6 +74,9 @@ class Tag_Recipe_Relation(db.Model):
     r_tag_id = db.Column(db.Integer,
                             db.ForeignKey('recipe_tags.r_tag_id'), )
 
+    # recipe_tag = db.relationship('Recipe_Tags', backref = 'tag_recipe_relation')
+    # recipes = db.relationship('Recipes', backref = 'tag_recipe_relation')
+
     def __repr__(self):
         return f'<tag-recipe-relationship id {self.tr_relation_id} is related to recipe_id {self.recipe_id} and recipe-tag id {self.r_tag_id}>'
 
@@ -104,6 +107,9 @@ class Recipe_Ingredient_Relation(db.Model):
                             db.ForeignKey('recipes.recipe_id'), )
     ingredient_id = db.Column(db.Integer,
                             db.ForeignKey('ingredients.ingredient_id'), )
+
+    # ingredients = db.relationship('Ingredients', backref = 'recipe_ing_relate')
+    # recipes = db.relationship('Recipes', backref = 'recipe_ing_relate')
     
     def __repr__(self):
         return f'<ingredient-recipe-relationship id {self.ri_relation_id} is related to recipe_id {self.recipe_id} and ingredient id {self.ingredient_id}>'
@@ -144,6 +150,8 @@ class Tag_Ingredient_Relation(db.Model):
 class Ingredient_Tags(db.Model):
     """Tags to further identify ingredients for the user"""
 
+    __tablename__ = 'ingredient_tags'
+
     i_tag_id = db.Column(db.Integer,
                         primary_key = True,
                         autoincrement = True, )
@@ -172,4 +180,4 @@ if __name__ == '__main__':
     # too annoying; this will tell SQLAlchemy not to print out every
     # query it executes.
 
-    #connect_to_db(app, echo=False)
+    connect_to_db(app, echo=False)
