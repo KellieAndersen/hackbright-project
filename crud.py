@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-from model import db, Recipes, Ingredients, Ratings, Notes, Recipe_Tags, Ingredient_Tags, Tag_Recipe_Relation, Recipe_Ingredient_Relation, Tag_Ingredient_Relation, connect_to_db
+from model import db, Recipes, Ingredients, Ratings, Notes, Recipe_Tags, Tag_Recipe_Relation, connect_to_db
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -129,12 +129,12 @@ def add_tag_to_recipe(tag_id, recipe_id):
     tag = get_recipe_tag_by_id(tag_id)
     rec = get_recipe_by_id(recipe_id)
 
-    rec.recipe_tags.append(tag)
+    rec.tags.append(tag)
 
     db.session.add(rec)
     db.session.commit()
 
-    return rec.ingredients
+    return rec.tags
 
 
 
