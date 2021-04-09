@@ -78,10 +78,10 @@ def get_ingredient_by_name(ingredient_name):
     return Ingredients.query.get(ingredient_name)
 
 
-def create_rating(recipe, rating):
+def create_rating(recipe_id, rating):
     """Create and reutrn a new rating"""
 
-    rating = Ratings(recipe = recipe, rating = rating)
+    rating = Ratings(recipe_id = recipe_id, rating = rating)
 
     db.session.add(rating)
     db.session.commit()
@@ -89,10 +89,10 @@ def create_rating(recipe, rating):
     return rating
 
 
-def create_note(recipe, note):
+def create_note(recipe_id, note):
     """Create and return a new note"""
 
-    note = Notes(recipe = recipe, note = note)
+    note = Notes(recipe_id = recipe_id, note = note)
 
     db.session.add(note)
     db.session.commit()

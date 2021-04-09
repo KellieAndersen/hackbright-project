@@ -59,7 +59,7 @@ class Notes(db.Model):
     note = db.Column(db.Text, )
 
     def __repr__(self):
-        return f'<recipe id {self.recipe_id} has notes at note_id {self.note_id}: {self.notes}>'
+        return f'<recipe id {self.recipe_id} has notes at note_id {self.note_id}: {self.note}>'
 
 class Tag_Recipe_Relation(db.Model):
     """Relationship table for recipe tags and recipes"""
