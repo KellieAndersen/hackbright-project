@@ -1,15 +1,15 @@
 """CRUD operations"""
 
-from model import db, Recipes, Ingredients, Ratings, Notes,
-    Recipe_Tags, Ingredient_Tags, Tag_Recipe_Relation, Recipe_Ingredient_Relation,
-    Tag_Ingredient_Relation, connect_to_db
+from model import db, Recipes, Ingredients, Ratings, Notes, Recipe_Tags, Ingredient_Tags, Tag_Recipe_Relation, Recipe_Ingredient_Relation, Tag_Ingredient_Relation, connect_to_db
 from flask_sqlalchemy import SQLAlchemy
 
 
 def create_recipe(recipe_name, originator, directions):
     """Create and return a new recipe"""
 
-    recipe = Recipes(recipe_name = recipe_name, originator = originator, directions = directions)
+    recipe = Recipes(recipe_name = recipe_name, 
+                    originator = originator, 
+                    directions = directions)
 
     db.session.add(recipe)
     db.session.commit()
@@ -26,7 +26,13 @@ def all_recipes():
 def get_recipe_by_id(recipe_id):
     """Find recipe using id"""
 
-    return Recipe.query.get(recipe_id)
+    return Recipes.query.get(recipe_id)
+
+
+def get_recipe_by_name(recipe_name):
+    """Find recipe using recipe_name"""
+
+    return Recipes.query.get(recipe_name)
 
 
 def create_ingredient(ingredient_name):
@@ -40,10 +46,36 @@ def create_ingredient(ingredient_name):
     return ingredient
 
 
+def add_ingredient_to_recipe(ingredient_id, recipe_id):
+    """Append ingredient to recipe ingredient list"""
+
+    ingr = get_ingredient_by_id(ingredient_id)
+    rec = get_recipe_by_id(recipe_id)
+
+    rec.ingredients.append(ingr)
+
+    db.session.add(rec)
+    db.session.commit()
+
+    return rec.ingredients ##
+
+
 def all_ingredients():
     """Return all ingredients"""
 
     return Ingredients.query.all()
+
+
+def get_ingredient_by_id(ingredient_id):
+    """Find ingredient using id"""
+
+    return Ingredients.query.get(ingredient_id)
+
+
+def get_ingredient_by_name(ingredient_name):
+    """Find ingredient using ingredient_name"""
+
+    return Ingredients.query.get(ingredient_name)
 
 
 def create_rating(recipe, rating):
@@ -74,3 +106,4 @@ def create_note(recipe, note):
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
+
