@@ -71,8 +71,8 @@ class Tag_Recipe_Relation(db.Model):
                             autoincrement = True, )
     recipe_id = db.Column(db.Integer,
                             db.ForeignKey('recipes.recipe_id'), )
-    r_tag_id = db.Column(db.Integer,
-                            db.ForeignKey('recipe_tags.r_tag_id'), )
+    tag_id = db.Column(db.Integer,
+                            db.ForeignKey('recipe_tags.tag_id'), )
 
     # recipe_tag = db.relationship('Recipe_Tags', backref = 'tag_recipe_relation')
     # recipes = db.relationship('Recipes', backref = 'tag_recipe_relation')
@@ -85,14 +85,14 @@ class Recipe_Tags(db.Model):
 
     __tablename__ = 'recipe_tags'
 
-    r_tag_id = db.Column(db.Integer,
+    tag_id = db.Column(db.Integer,
                         primary_key = True,
                         autoincrement = True, )
-    r_tag_name = db.Column(db.String,
+    tag_name = db.Column(db.String,
                         unique = True, ) #not sure if tag should be unique, but probably
 
     def __repr__(self):
-        return f'<recipe-tag id {self.r_tag_id} is {self.r_tag_name}>'
+        return f'<recipe-tag id {self.tag_id} is {self.tag_name}>'
 
 
 class Recipe_Ingredient_Relation(db.Model):
@@ -130,35 +130,35 @@ class Ingredients(db.Model):
         return f'<ingredient_id {self.ingredient_id} is {self.ingredient_name}>'
 
 
-class Tag_Ingredient_Relation(db.Model):
-    """Relationship table for ingredient tags and ingredients"""
+# class Tag_Ingredient_Relation(db.Model):
+#     """Relationship table for ingredient tags and ingredients"""
 
-    __tablename__ = 'tag_ing_relate'
+#     __tablename__ = 'tag_ing_relate'
 
-    ti_relation_id = db.Column(db.Integer,
-                                primary_key = True,
-                                autoincrement = True, )
-    ingredient_id = db.Column(db.Integer,
-                                db.ForeignKey('ingredients.ingredient_id'), )
-    i_tag_id = db.Column(db.Integer,
-                                db.ForeignKey('ingredient_tags.i_tag_id'), )
+#     ti_relation_id = db.Column(db.Integer,
+#                                 primary_key = True,
+#                                 autoincrement = True, )
+#     ingredient_id = db.Column(db.Integer,
+#                                 db.ForeignKey('ingredients.ingredient_id'), )
+#     i_tag_id = db.Column(db.Integer,
+#                                 db.ForeignKey('ingredient_tags.i_tag_id'), )
     
-    def __repr__(self):
-        return f'<tag-ingredient-relationship id {self.ti_relation_id} is relates to ingredient_id {self.ingredient_id} and ingredient-tag id {self.i_tag_id}>'
+#     def __repr__(self):
+#         return f'<tag-ingredient-relationship id {self.ti_relation_id} is relates to ingredient_id {self.ingredient_id} and ingredient-tag id {self.i_tag_id}>'
 
 
-class Ingredient_Tags(db.Model):
-    """Tags to further identify ingredients for the user"""
+# class Ingredient_Tags(db.Model):
+#     """Tags to further identify ingredients for the user"""
 
-    __tablename__ = 'ingredient_tags'
+#     __tablename__ = 'ingredient_tags'
 
-    i_tag_id = db.Column(db.Integer,
-                        primary_key = True,
-                        autoincrement = True, )
-    i_tag_name = db.Column(db.String, )
+#     i_tag_id = db.Column(db.Integer,
+#                         primary_key = True,
+#                         autoincrement = True, )
+#     i_tag_name = db.Column(db.String, )
 
-    def __repr__(self):
-        return f'<ingredient tag id {self.i_tag_id} is {self.i_tag_name}>'
+#     def __repr__(self):
+#         return f'<ingredient tag id {self.i_tag_id} is {self.i_tag_name}>'
     
 
 

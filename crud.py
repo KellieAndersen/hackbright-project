@@ -100,6 +100,44 @@ def create_note(recipe, note):
     return note
 
 
+def create_recipe_tag(tag_name):
+    """Create and return a new recipe tag"""
+
+    r_tag = Recipe_Tags(tag_name = tag_name)
+
+    db.session.add(r_tag)
+    db.session.commit()
+
+    return r_tag
+
+
+def get_recipe_tag_by_id(tag_id):
+    """Find recipe tag using id"""
+
+    return Recipe_Tags.query.get(tag_id)
+
+
+def get_recipe_tag_by_name(tag_name):
+    """Find recipe tag using tag name"""
+
+    return Recipe_Tags.query.get(tag_name)
+
+
+def add_tag_to_recipe(tag_id, recipe_id):
+    """Add a tag to a recipe"""
+
+    tag = get_recipe_tag_by_id(tag_id)
+    rec = get_recipe_by_id(recipe_id)
+
+    rec.recipe_tags.append(tag)
+
+    db.session.add(rec)
+    db.session.commit()
+
+    return rec.ingredients
+
+
+
 
 
 
