@@ -21,7 +21,15 @@ def homepage():
 def view_recipes():
     """View all recipes"""
 
-    return render_template('')
+    return render_template('all_recipes.html', see_recipes=recipes)
+
+
+@app.route('/recipes/<recipe_id>')
+def show_recipe(recipe_id):
+    """Show recipe details"""
+
+    recipe = crud.get_recipe_by_id(recipe_id)
+    return render_template('recipe_details.html', recipe=recipe)
 
 
 @app.route('/ingredients')
