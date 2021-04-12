@@ -25,21 +25,31 @@ for recipe in recipe_data:
 
     db_recipe = crud.create_recipe(recipe_name, originator, directions)
 
-    n = recipe['note']
-    note = crud.create_note(db_recipe.recipe_id, n)
+## check if there is a note, if recipe[note]....
+    if recipe['note']:
+        n = recipe['note']
+        note = crud.create_note(db_recipe.recipe_id, n)
 
-    rate = recipe['rating']
-    rating = crud.create_rating(db_recipe.recipe_id, rate)
+    if recipe['rating']:
+        rate = recipe['rating']
+        rating = crud.create_rating(db_recipe.recipe_id, rate)
 
-    tags = recipe['tags']
-    for tag in tags:
-        t = crud.create_recipe_tag(tag)
-        crud.add_tag_to_recipe(t.tag_id,db_recipe.recipe_id) ## 
+    # if recipe['tags']:
+    #     tags = recipe['tags']
+    #     for tag in tags:
+    #         if tag not in crud.all_tags():
+    #             t = crud.create_recipe_tag(tag)
+    #             crud.add_tag_to_recipe(t.tag_id,db_recipe.recipe_id) ## 
+    #         else:
+    #             crud.add_tag_to_recipe(tag.tag_id,db_recipe.recipe_id)
 
     ingredients = recipe['ingredients']
     for ingredient in ingredients:
-        ing = crud.create_ingredient(ingredient)
-        crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id) ##
+        if ingredient not in crud.get_all_ingr_by_name():
+            ing = crud.create_ingredient(ingredient) ## if statement if ing already in list, skip create
+            crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id) ##
+        else:
+            crud.add_ingredient_to_recipe(ingredient.ingredient_id, db_recipe.recipe_id)
 
     recipes_in_db.append(db_recipe)
  
@@ -55,11 +65,11 @@ for recipe in recipe_data:
 
 
     #  {
-    #     "recipe_name": "",
-    #     "originator": "",
-    #     "ingredients": [""],
-    #     "directions": "",
-    #     "tags":[""],
-    #     "rating": "",
-    #     "note": ""
+        # "recipe_name": "",
+        # "originator": "",
+        # "ingredients": [""],
+        # "directions": "",
+        # "tags":[""],
+        # "rating": "",
+        # "note": ""
     # }

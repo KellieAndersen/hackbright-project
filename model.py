@@ -124,8 +124,8 @@ class Ingredients(db.Model):
                             primary_key = True,
                             autoincrement = True, )
     ingredient_name = db.Column(db.String,
-                                unique = True,
-                                nullable = False, )  #again, not sure if this should be unique
+                                nullable = False,
+                                unique = True, )  #again, not sure if this should be unique
     def __repr__(self):
         return f'<ingredient_id {self.ingredient_id} is {self.ingredient_name}>'
 
