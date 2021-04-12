@@ -21,6 +21,7 @@ def homepage():
 def view_recipes():
     """View all recipes"""
 
+    recipes = crud.all_recipes()
     return render_template('all_recipes.html', see_recipes=recipes)
 
 

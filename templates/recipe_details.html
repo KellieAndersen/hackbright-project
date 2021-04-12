@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ recipe.recipe_name }}</h1>
+
+<p>
+  {{ recipe.ingredients }}
+  {{ recipe.directions }}
+  {{ recipe.note }} 
+  <!-- {{ recipe.note }} not sure if this should be note or notes  -->
+  {{ recipe.rating }}
+  {{ recipe.originator }}
+  {{ recipe.tags }}
+
+</p>
+
+<img src="{{ movie.poster_path }}">
+{% endblock %}
