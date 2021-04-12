@@ -52,9 +52,6 @@ def add_ingredient_to_recipe(ingredient_id, recipe_id):
     ingr = get_ingredient_by_id(ingredient_id)
     rec = get_recipe_by_id(recipe_id)
 
-    # ingr = ingredient_id
-    # rec = recipe_id
-
     rec.ingredients.append(ingr)
 
     db.session.add(rec)

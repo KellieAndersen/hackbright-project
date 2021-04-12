@@ -10,11 +10,32 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 
-# @app.route('/')
-# def homepage():
-#     """See homepage"""
+@app.route('/')
+def homepage():
+    """See homepage"""
 
-#     return render_template('homepage.html')
+    return render_template('homepage.html')
+
+
+@app.route('/recipes')
+def view_recipes():
+    """View all recipes"""
+
+    return render_template('')
+
+
+@app.route('/ingredients')
+def view_ingredients():
+    """View all ingredients"""
+
+    return render_template('')
+
+
+@app.route('/create_recipe')
+def create_new_recipe():
+    """Create a new recipe"""
+
+    return render_template('')
 
 
 
