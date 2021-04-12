@@ -37,7 +37,8 @@ def show_recipe(recipe_id):
 def view_ingredients():
     """View all ingredients"""
 
-    return render_template('')
+    ingredients = crud.all_ingredients()
+    return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
 @app.route('/create_recipe')
