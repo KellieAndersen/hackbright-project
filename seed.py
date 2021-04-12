@@ -34,22 +34,27 @@ for recipe in recipe_data:
         rate = recipe['rating']
         rating = crud.create_rating(db_recipe.recipe_id, rate)
 
-    # if recipe['tags']:
-    #     tags = recipe['tags']
-    #     for tag in tags:
-    #         if tag not in crud.all_tags():
-    #             t = crud.create_recipe_tag(tag)
-    #             crud.add_tag_to_recipe(t.tag_id,db_recipe.recipe_id) ## 
-    #         else:
-    #             crud.add_tag_to_recipe(tag.tag_id,db_recipe.recipe_id)
+    if recipe['tags']:
+        tags = recipe['tags']
+        for tag in tags:
+            exist_tag = crud.get_recipe_tag_by_name(tag)
+            if exist_tag:
+                crud.add_tag_to_recipe(exist_tag.tag_id,db_recipe.recipe_id) ## 
+            else:
+                t = crud.create_recipe_tag(tag)
+                crud.add_tag_to_recipe(t.tag_id,db_recipe.recipe_id)
+
+
 
     ingredients = recipe['ingredients']
     for ingredient in ingredients:
-        if ingredient not in crud.get_all_ingr_by_name():
-            ing = crud.create_ingredient(ingredient) ## if statement if ing already in list, skip create
-            crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id) ##
+        ingred = crud.get_ingredient_by_name(ingredient)
+        if ingred:
+            crud.add_ingredient_to_recipe(ingred.ingredient_id, db_recipe.recipe_id)
         else:
-            crud.add_ingredient_to_recipe(ingredient.ingredient_id, db_recipe.recipe_id)
+            ing = crud.create_ingredient(ingredient) ## if statement if ing already in list, skip create
+            crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id) ##   
+
 
     recipes_in_db.append(db_recipe)
  

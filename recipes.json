@@ -12,7 +12,7 @@
         "recipe_name": "Grilled Cheese with Bacon",
         "originator": "Lana",
         "ingredients": ["bread", "cheese", "butter", "mayo", "bacon"],
-        "directions": "Ingredients: 2 slices of bread, 3 slices of your favorite cheese, 2 Tbsp butter, mayo, several slices of bacon based on preference     Directions: 1. Spread inside of bread slices with butter. Put slices of cheese and bacon between breaed pieces.   2. Spread mayo on the outside of bread slices.   3. Melt a pat of butter on a hot griddle. Put sandwich on hot griddle after butter melts and toast to a golden brown.   4. Flip sandwich and toast other side until golden brown and the cheese has melted.   5. Turn heat off and plate sandwich with desired side(s). Enjoy your sandwich.",
+        "directions": "Ingredients: 2 slices of bread, 3 slices of your favorite cheese, 2 Tbsp butter, mayo, several slices of cooked bacon based on preference     Directions: 1. Spread inside of bread slices with butter. Put slices of cheese and bacon between breaed pieces.   2. Spread mayo on the outside of bread slices.   3. Melt a pat of butter on a hot griddle. Put sandwich on hot griddle after butter melts and toast to a golden brown.   4. Flip sandwich and toast other side until golden brown and the cheese has melted.   5. Turn heat off and plate sandwich with desired side(s). Enjoy your sandwich.",
         "tags": ["lunch", "hot food"],
         "rating": 4,
         "note":"" 
@@ -25,5 +25,14 @@
         "tags":["snack"],
         "rating": "",
         "note": ""
+    },
+    {
+        "recipe_name": "Classic Grilled Cheese",
+        "originator": "Fanny",
+        "ingredients": ["bread", "cheese", "butter", "mayo"],
+        "directions": "Ingredients: 2 slices of bread, 3 slices of your favorite cheese, 2 Tbsp butter, mayo     Directions: 1. Spread inside of bread slices with butter. Put slices of cheese between breaed pieces.   2. Spread mayo on the outside of bread slices.   3. Melt a pat of butter on a hot griddle. Put sandwich on hot griddle after butter melts and toast to a golden brown.   4. Flip sandwich and toast other side until golden brown and the cheese has melted.   5. Turn heat off and plate sandwich with desired side(s). Enjoy your sandwich.",
+        "tags": ["lunch", "hot food"],
+        "rating": 3,
+        "note":"" 
     }
 ]

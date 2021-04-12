@@ -52,6 +52,9 @@ def add_ingredient_to_recipe(ingredient_id, recipe_id):
     ingr = get_ingredient_by_id(ingredient_id)
     rec = get_recipe_by_id(recipe_id)
 
+    # ingr = ingredient_id
+    # rec = recipe_id
+
     rec.ingredients.append(ingr)
 
     db.session.add(rec)
@@ -76,12 +79,6 @@ def get_ingredient_by_name(ingredient_name):
     """Find ingredient using ingredient_name"""
 
     return Ingredients.query.filter(Ingredients.ingredient_name == ingredient_name).first()
-
-
-def get_all_ingr_by_name():
-    """Return all ingredient names"""
-
-    return Ingredients.ingredient_name.query.all() ##
 
 
 def create_rating(recipe_id, rating):
@@ -120,7 +117,7 @@ def create_recipe_tag(tag_name):
 def all_tags():
     """Return all tags"""
 
-    return Recipe_Tags.query.all()
+    return Recipe_Tags.query.all() ##
 
 
 def get_recipe_tag_by_id(tag_id):
@@ -132,7 +129,7 @@ def get_recipe_tag_by_id(tag_id):
 def get_recipe_tag_by_name(tag_name):
     """Find recipe tag using tag name"""
 
-    return Recipe_Tags.query.filter(Recipe_tags.tag_name == tag_name).first()
+    return Recipe_Tags.query.filter(Recipe_Tags.tag_name == tag_name).first()
 
 
 def add_tag_to_recipe(tag_id, recipe_id):
