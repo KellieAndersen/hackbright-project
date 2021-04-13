@@ -23,6 +23,14 @@ def all_recipes():
     return Recipes.query.all()
 
 
+def alphabetical_recipes():
+    """Return all recipes in alphabetical order"""
+
+    q = Recipes.query
+
+    return q.order_by('recipe_name')
+
+
 def get_recipe_by_id(recipe_id):
     """Find recipe using id"""
 
@@ -67,23 +75,11 @@ def all_ingredients():
 
 
 def alphabetical_ingredients():#####
-    """Return all ingredients in alphabetical order"""
+    """Return all ingredients in alphabetical order""" 
 
-    # all_ing = list(all_ingredients())
-    # all_ing_name = []
-    # for ing in all_ing:
-    #     all_ing_name.append(ing.ingredient_name)
-
-    ##all_names_ing = []
-    ##for i in range(len(all_ingredients())):
-    ##    all_names_ing.append(get_ingredient_by_id(i))
-
-    all_ing_name = []
-    for i in range(Ingredients.query.count()):
-        ing = get_ingredient_by_id(i)
-        all_ing_name.append(ing.ingredient_name)    
+    q = Ingredients.query
         
-    return all_ing_name.sort()
+    return q.order_by('ingredient_name')
 
 
 def get_last_ingredient_id():###

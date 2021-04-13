@@ -21,7 +21,7 @@ def homepage():
 def view_recipes():
     """View all recipes"""
 
-    recipes = crud.all_recipes()
+    recipes = crud.alphabetical_recipes()
     return render_template('all_recipes.html', see_recipes=recipes)
 
 
@@ -37,7 +37,7 @@ def show_recipe(recipe_id):
 def view_ingredients():
     """View all ingredients"""
 
-    ingredients = crud.all_ingredients()
+    ingredients = crud.alphabetical_ingredients()
     return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
