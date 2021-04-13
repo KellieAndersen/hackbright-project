@@ -7,14 +7,28 @@
 
 <p>
   {{ recipe.ingredients }}
-  {{ recipe.directions }}
-  {{ recipe.note }} 
-  <!-- {{ recipe.note }} not sure if this should be note or notes  -->
-  {{ recipe.rating }}
-  {{ recipe.originator }}
-  {{ recipe.tags }}
-
 </p>
+<p>  
+  {{ recipe.directions }}
+</p>
+{% for note in recipe.notes %}
+<p> 
+  {{ recipe.notes }} 
+</p>   
+{% endfor %}
+{% for rate in recipe.rating %}
+<p>
+  {{ recipe.rating }}
+</p>
+{% endfor %}
+<p>
+  {{ recipe.originator }}
+</p>
+{% if recipe.tags %}
+<p>  
+  {{ recipe.tags }}
+</p>
+{% endif %}
 
-<!-- <img src="{{ movie.poster_path }}"> -->
+<!-- <img src=" movie.poster_path "> -->
 {% endblock %}

@@ -54,7 +54,7 @@ def view_recipes_by_ingredient(ingredient_id):
 def create_new_recipe():
     """Create a new recipe"""
 
-    return render_template('')
+    return render_template('create_recipe.html')##
 
 
 

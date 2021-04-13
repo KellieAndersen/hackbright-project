@@ -66,6 +66,32 @@ def all_ingredients():
     return Ingredients.query.all() ##
 
 
+def alphabetical_ingredients():#####
+    """Return all ingredients in alphabetical order"""
+
+    # all_ing = list(all_ingredients())
+    # all_ing_name = []
+    # for ing in all_ing:
+    #     all_ing_name.append(ing.ingredient_name)
+
+    ##all_names_ing = []
+    ##for i in range(len(all_ingredients())):
+    ##    all_names_ing.append(get_ingredient_by_id(i))
+
+    all_ing_name = []
+    for i in range(Ingredients.query.count()):
+        ing = get_ingredient_by_id(i)
+        all_ing_name.append(ing.ingredient_name)    
+        
+    return all_ing_name.sort()
+
+
+def get_last_ingredient_id():###
+    """Find the highest integer ingredient_id"""
+
+    last_int = Ingredients.query.count()
+
+
 def get_ingredient_by_id(ingredient_id):
     """Find ingredient using id"""
 
