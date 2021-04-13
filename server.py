@@ -41,6 +41,15 @@ def view_ingredients():
     return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
+@app.route('/ingredients/<ingedient_id>')
+def view_recipes_by_ingredient(ingredient_id):
+    """Show recipes using a specific ingredient"""
+
+    ingredient
+    return render_template('ingredient_recipes.html')##
+
+
+
 @app.route('/create_recipe')
 def create_new_recipe():
     """Create a new recipe"""
