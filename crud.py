@@ -65,28 +65,22 @@ def add_ingredient_to_recipe(ingredient_id, recipe_id):
     db.session.add(rec)
     db.session.commit()
 
-    return rec.ingredients ##
+    return rec.ingredients 
 
 
 def all_ingredients():
     """Return all ingredients"""
 
-    return Ingredients.query.all() ##
+    return Ingredients.query.all() 
 
 
-def alphabetical_ingredients():#####
+def alphabetical_ingredients():
     """Return all ingredients in alphabetical order""" 
 
     q = Ingredients.query
         
     return q.order_by('ingredient_name')
-
-
-def get_last_ingredient_id():###
-    """Find the highest integer ingredient_id"""
-
-    last_int = Ingredients.query.count()
-
+    
 
 def get_ingredient_by_id(ingredient_id):
     """Find ingredient using id"""

@@ -50,7 +50,7 @@ def view_recipes_by_ingredient(ingredient_id):
 
 
 
-@app.route('/create_recipe')
+@app.route('/create_recipe', methods=['GET'])
 def create_new_recipe():
     """Create a new recipe"""
 

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Create a Recipe{% endblock %}
+
+{% block body %}
+  <h1>Create a Recipe</h1>
+
+  <form action="/login" method="GET">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+{% endblock %}
