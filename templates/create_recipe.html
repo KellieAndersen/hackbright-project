@@ -6,16 +6,32 @@
 
   <form action="/login" method="GET">
     <p>
-      Recipe Name <input type="text" name="recipe_name">
+      Recipe Name: <input type="text" name="recipe_name" placeholder="ex: French Toast" required>*
     </p>
 
     <p>
-      Password <input type="text" name="password">
+      From the Kitchen of: <input type="text" name="originator" placeholder="ex: Grandma Bonnell" required>*
+    </p>
+
+    <p>
+      Ingredients Names:
+    </p>
+
+    <p>
+      <div>Directions: </div>
+      <textarea name="directions" rows="10" cols="80" wrap="hard" required></textarea>*
+      <!-- ^^^not sure what to do to make the ta an input form^^^ -->
+    </p>
+
+    <p>
+        Rating: <input type="number" name="rating" min="1" max="5"> /5     (optional, must be a number from 1 to 5)
     </p>
 
     <p>
       <input type="submit">
     </p>
   </form>
+
+  * denotes a required field
 
 {% endblock %}
