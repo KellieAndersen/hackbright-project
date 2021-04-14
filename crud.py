@@ -43,6 +43,21 @@ def get_recipe_by_name(recipe_name):
     return Recipes.query.get(recipe_name)
 
 
+def get_recipes_by_ingredient(ingredient_id):
+    """Return all recipes that contain a specific ingredient"""
+    
+    ingred = get_ingredient_by_id(ingredient_id)
+    recipes = alphabetical_recipes()
+    rec_inc_ing = []    
+    
+    for recipe in recipes:
+        if ingred in recipe.ingredients:
+            rec_inc_ing.append(recipe)
+
+    return rec_inc_ing
+
+
+
 def create_ingredient(ingredient_name):
     """Create and return a new ingredient"""
 
@@ -64,6 +79,7 @@ def add_ingredient_to_recipe(ingredient_id, recipe_id):
 
     db.session.add(rec)
     db.session.commit()
+
 
     return rec.ingredients 
 

@@ -41,12 +41,14 @@ def view_ingredients():
     return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
-@app.route('/ingredients/<ingedient_id>')
+@app.route('/ingredients/<ingredient_id>')
 def view_recipes_by_ingredient(ingredient_id):
     """Show recipes using a specific ingredient"""
+    
+    ingredient = crud.get_ingredient_by_id(ingredient_id)
+    recipes_by_ing = crud.get_recipes_by_ingredient(ingredient_id)
 
-    ingredient
-    return render_template('ingredient_recipes.html')##
+    return render_template('ingredient_recipes.html', see_recipes=recipes_by_ing, ingredient=ingredient)##
 
 
 
