@@ -57,7 +57,7 @@ def view_recipes_with_ingredients(ingredient_ids):
 
     recipes_include_ings = crud.get_recipes_by_ingredient(ingredient_id)
 
-    return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=)
+    return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=ingredients)
 ####
 
 

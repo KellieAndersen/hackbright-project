@@ -2,28 +2,22 @@
 {% block title %}Search for Recipes Including Ingredients{% endblock %}
 
 {% block body %}
-  <h1>Search for Recipes Including Certan Ingredients</h1>
+  <h1>Search for Recipes Including Certain Ingredients</h1>
 
-  <form action="/create_recipe" method="GET">
+  <form action="/search_for_recipes_with_ing" method="GET">
+
+    <h2>Enter Ingredients You Want to Include:</h2>
+    <h3>Please capitalize ingredient words and separate ingredients with commas</h3>
     <p>
-      Recipe Name: <input type="text" name="recipe_name" placeholder="ex: Fruit Salad" required>*
+      Ingredients: <input type="text" name="ingredients" required>
     </p>
 
-    <p>
-      From the Kitchen of: <input type="text" name="originator" placeholder="ex: Grandma Bonnell" required>*
-    </p>
-
-    <p>
-      Ingredient Names: <input type="text" name="ingredients" placeholder="ex: Starfruit" required>*
-    </p>
-
+<!-- Ideally the results should also include a list of what ingredients were matched -->
 
     <p>
       <input type="submit">
     </p>
-  </form>
 
-  <div>* denotes a required field</div>
-  ***Please capitalize all recipe names and ingredient names***
+  </form>
 
 {% endblock %}

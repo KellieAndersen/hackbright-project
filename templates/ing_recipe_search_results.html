@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Recipes Including {{ ingredient.ingredient_name }}{% endblock %}
+{% block title %}Search Results{% endblock %}
 
 {% block body %}
-    <h1>Recipes Including {{ ingredient.ingredient_name }}</h1>
+    <h1>Search Results</h1>
     <ul>
         {% for recipe in see_recipes %}
             <li>
                 <p>
                     <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</a> 
-                    <!-- ^^^ links to recipe detail pages ^^^ -->
+                    <!-- ^^^ should include list of matched ingredients under recipes ^^^ -->
                 </p>
             </li>   
         {% endfor %}
