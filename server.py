@@ -44,7 +44,7 @@ def view_ingredients():
 @app.route('/ingredients/<ingredient_id>')
 def view_recipes_by_ingredient(ingredient_id):
     """Show recipes using a specific ingredient"""
-    
+
     ingredient = crud.get_ingredient_by_id(ingredient_id)
     recipes_by_ing = crud.get_recipes_by_ingredient(ingredient_id)
 
@@ -55,6 +55,15 @@ def view_recipes_by_ingredient(ingredient_id):
 @app.route('/create_recipe', methods=['GET'])
 def create_new_recipe():
     """Create a new recipe"""
+
+    recipe_name = request.args.get('recipe_name')
+    originator = request.args.get('originator')
+    ingredients = request.args.get('ingredients')
+    directions = request.args.get('directions')
+    notes = request.args.get('notes')
+    tags = request.args.get('tags')
+    rating = request.args.get('rating')
+    
 
     return render_template('create_recipe.html')##
 

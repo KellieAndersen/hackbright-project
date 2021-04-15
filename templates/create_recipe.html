@@ -4,7 +4,7 @@
 {% block body %}
   <h1>Create a Recipe</h1>
 
-  <form action="/login" method="GET">
+  <form action="/create_recipe" method="GET">
     <p>
       Recipe Name: <input type="text" name="recipe_name" placeholder="ex: Fruit Salad" required>*
     </p>
@@ -14,7 +14,7 @@
     </p>
 
     <p>
-      Ingredients Names: <input type="text" name="ingredients" placeholder="ex: Starfruit" required>*
+      Ingredient Names: <input type="text" name="ingredients" placeholder="ex: Starfruit" required>*
     </p>
 
     <p>
@@ -29,7 +29,7 @@
     </p>
 
     <p>
-      Tags: <input type="text" name="tags" placeholder="ex: side dish">
+      Tag(s): <input type="text" name="tags" placeholder="ex: side dish">
     </p>
 
     <p>
