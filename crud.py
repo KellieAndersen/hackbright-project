@@ -175,6 +175,20 @@ def add_tag_to_recipe(tag_id, recipe_id):
     return rec.tags
 
 
+###last piece of functionality to find recipes containing multiple specific ingredients
+def get_recipes_by_multiple_ing(ingredient_id_list):
+    """Return all recipes that contain any number of specified ingredients"""
+    
+    recipe_search_results = []
+    for ingredient_id in ingredient_id_list:
+        recipe_list = get_recipes_by_ingredient(ingredient_id)
+        recipe_search_results.extend(recipe_list)
+
+    recipe_search_results.sort()    ####
+
+    return recipe_search_results
+###
+
 
 
 

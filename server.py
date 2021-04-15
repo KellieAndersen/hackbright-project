@@ -1,6 +1,6 @@
 """Server for recipe app"""
 
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from model import connect_to_db
 import crud
 from jinja2 import StrictUndefined
@@ -50,6 +50,16 @@ def view_recipes_by_ingredient(ingredient_id):
 
     return render_template('ingredient_recipes.html', see_recipes=recipes_by_ing, ingredient=ingredient)##
 
+####
+@app.route('/search_for_recipes_with_ing', methods=['GET'])
+def view_recipes_with_ingredients(ingredient_ids):
+    """Show all the recipes that contain any of the specified ingredients"""
+
+    recipes_include_ings = crud.get_recipes_by_ingredient(ingredient_id)
+
+    return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=)
+####
+
 
 
 @app.route('/create_recipe', methods=['GET'])
@@ -63,7 +73,7 @@ def create_new_recipe():
     notes = request.args.get('notes')
     tags = request.args.get('tags')
     rating = request.args.get('rating')
-    
+
 
     return render_template('create_recipe.html')##
 
