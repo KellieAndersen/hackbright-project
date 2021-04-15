@@ -74,8 +74,21 @@ def create_new_recipe():
     tags = request.args.get('tags')
     rating = request.args.get('rating')
 
+    created_recipe = crud.create_recipe(recipe_name, originator, directions)
+    crud.create_note(created_recipe.recipe_id, notes)
+    crud.create_rating(created_recipe.recipe_id, rating)
 
-    return render_template('create_recipe.html')##
+    ###
+    tag_list = crud.string_to_list(tags)
+    for tag in tag_list:
+        crud.
+    ing_list = crud.string_to_list(ingredients)
+    ###
+
+    ##make POST and request.form.get when sure it works
+
+
+    return render_template('create_recipe.html')##redirect
 
 
 

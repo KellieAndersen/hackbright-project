@@ -6,34 +6,46 @@
 
   <form action="/create_recipe" method="GET">
     <p>
-      Recipe Name: <input type="text" name="recipe_name" placeholder="ex: Fruit Salad" required>*
+      <b>Recipe Name:</b> <input type="text" name="recipe_name" placeholder="ex: Fruit Salad" required>*
     </p>
 
     <p>
-      From the Kitchen of: <input type="text" name="originator" placeholder="ex: Grandma Bonnell" required>*
+      <b>From the Kitchen of:</b> <input type="text" name="originator" placeholder="ex: Grandma Bonnell" required>*
     </p>
 
     <p>
-      Ingredient Names: <input type="text" name="ingredients" placeholder="ex: Starfruit" required>*
+      <div><b>Ingredient Names:</b> *
+      Capitalize the words of all ingredients and separate ingredients with commas
+    </div>
+      <textarea name="ingredients" rows="5" cols="80" placeholder="ex: Starfruit, Strawberries, Oranges, Watermelon..." required></textarea>
+
     </p>
 
     <p>
-      <div>Directions: * </div>
-      <textarea name="directions" rows="10" cols="80" wrap="hard" placeholder="ex: 1. Wash and dry all produce..." required></textarea>*
+      <div><b>Directions:</b> * 
+      Include ingredient measurements here, too.</div>
+      <textarea name="directions" rows="10" cols="80" wrap="hard" placeholder="ex:   Ingredients: 
+      - 1 Starfruit
+      - 10 Strawberries
+      - 1 Orange
+      - 1.5 cups Watermelon chunks...
+      Directions:
+        1. Wash and dry all produce..." required></textarea>*
       <!-- ^^^not sure what to do to make the ta an input form^^^ -->
     </p>
 
     <p>
-      <div>Notes:</div>
+      <div><b>Notes:</b></div>
       <textarea name="notes" rows="5" cols="80" wrap="hard" placeholder="ex: Some people toss fruit in poppy seed dressing or honey and yogurt, but I like mine plain." required></textarea>
     </p>
 
     <p>
-      Tag(s): <input type="text" name="tags" placeholder="ex: side dish">
+      <div><b>Tag(s):</b> Use all lowercase letters for the words of all tags and separate tags with commas</div> 
+      <textarea name="tags" rows="5" cols = "80" placeholder="ex: side dish, summer, favorite..."></textarea>
     </p>
 
     <p>
-        Rating: <input type="number" name="rating" min="1" max="5" placeholder="ex: 5"> /5     (optional, must be a number from 1 to 5)
+        <b>Rating:</b> <input type="number" name="rating" min="1" max="5" placeholder="ex: 5"> /5     (optional, must be a number from 1 to 5)
     </p>
 
     <p>

@@ -191,6 +191,13 @@ def get_recipes_by_multiple_ing(ingredient_id_list):
 ###
 
 
+def string_to_list(string):
+    """Separate a string by commas into a list"""
+
+    resulting_list = string.split(", ")
+
+    return resulting_list
+
 
 
 
