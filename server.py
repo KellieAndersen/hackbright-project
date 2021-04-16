@@ -80,9 +80,10 @@ def create_new_recipe():
 
     ###
     tag_list = crud.string_to_list(tags)
-    for tag in tag_list:
-        crud.
+    crud.add_or_create_tag(tag_list, created_recipe)
+
     ing_list = crud.string_to_list(ingredients)
+    crud.add_or_create_ing(ing_list, created_recipe)
     ###
 
     ##make POST and request.form.get when sure it works

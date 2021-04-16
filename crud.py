@@ -199,6 +199,29 @@ def string_to_list(string):
     return resulting_list
 
 
+def add_or_create_tag(tag_list, recipe):
+    """Check if tags exist, if they do add them to a recipe, if not, create them"""
+
+    for tag in tag_list:
+        exist_tag = get_recipe_tag_by_name(tag)
+        if exist tag:
+            add_tag_to_recipe(exist_tag.tag_id, recipe.recipe_id)
+        else:
+            t = create_recipe_tag(tag)
+            add_tag_to_recipe(t.tag_id, recipe.recipe_id)
+
+
+def add_or_create_ing(ing_list, recipe):
+    """Create ingredient if it doesn't already exist; if it does, add to recipe"""
+
+    for ing in ing_list:
+        exist_ing = get_ingredient_by_name(ing)
+        if exist_ing:
+            add_ingredient_to_recipe(exist_ing.ingredient_id, recipe.recipe_id)
+        else:
+            created_ing = create_ingredient(ing)
+            add_ingredient_to_recipe(created_ing.ingredient_id, recipe.recipe_id)
+
 
 
 if __name__ == '__main__':
