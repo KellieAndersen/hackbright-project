@@ -51,7 +51,7 @@ def view_recipes_by_ingredient(ingredient_id):
     return render_template('ingredient_recipes.html', see_recipes=recipes_by_ing, ingredient=ingredient)##
 
 ####
-@app.route('/search_recipes', methods=['GET'])
+@app.route('/search_recipes')
 def search_for_recipes():
     """Show search form"""
 
