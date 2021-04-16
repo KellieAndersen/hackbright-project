@@ -58,13 +58,19 @@ def search_for_recipes():
     return render_template('search_with_ingredients.html')
 
 
-# @app.route('/search_for_recipes_with_ing', methods=['GET'])
-# def view_recipes_with_ingredients(ingredient_ids):
-#     """Show all the recipes that contain any of the specified ingredients"""
+@app.route('/search_for_recipes_with_ing', methods=['GET'])
+def view_recipes_with_ingredients():
+    """Show all the recipes that contain any of the specified ingredients"""
 
-#     recipes_include_ings = crud.get_recipes_by_ingredient(ingredient_id)
+    ingredient_list = request.args.get('ingredients')
+    ing_list = crud.string_to_list(ingredient_list)
+    ing_id_list = []
+    for ingr in ing_list:
+        ingred_by_name = crud.get_ingredient_by_name(ingr)
+        ing_id_list.append(ingred_by_name.ingredient_id)
+    recipe_search_results = crud.get_recipes_by_multiple_ing(ing_id_list)
 
-#     return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=ingredients)
+    return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results)
 ####
 
 
