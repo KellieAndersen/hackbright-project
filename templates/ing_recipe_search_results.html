@@ -8,6 +8,12 @@
             <li>
                 <p>
                     <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</a> 
+                    <div>
+                        <i>Includes ingredients:</i>
+                        {% for ingredient in recipe.ingredients %}
+                            <li>{{ingredient.ingredient_name }}</li>
+                        {% endfor %}
+                    </div>
                     <!-- ^^^ should include list of matched ingredients under recipes ^^^ -->
                 </p>
             </li>   

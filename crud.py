@@ -184,24 +184,28 @@ def get_recipes_by_multiple_ing(ingredient_list):
         recipe_list = get_recipes_by_ingredient(ingredient_id)
         recipe_search_results.extend(recipe_list)
 
-    # recipe_search_results.sort()    ####
-
     return recipe_search_results
     ### might want to create a dictionary- keys of recipes, values of matched ingredients
 
 
-# def get_recipes_by_ingredient_name(ingredient_name):
-#     """Return all recipes that contain a specific ingredient"""
+# def get_recipe_dictionary_by_multiple_ing(ingredient_list):
+#     """Return all recipes that contain any number of specified ingredients"""
+    
+#     recipe_search_results = {} 
+#     for ingredient_id in ingredient_list:
+#         ingred_by_id = get_ingredient_by_id(ingredient_id)
+#         alpha_recipes = alphabetical_recipes()
+#         rec_inc_ingr = []
 
-#     ingred = get_ingredient_by_name(ingredient_name)
-#     recipes = alphabetical_recipes()
-#     rec_inc_ing = []    
+#         for recipe in alpha_recipes:
+#             if ingred_by_id in recipe.ingredients:
+#                 rec_inc_ingr.append(recipe)
+#                 recipe_search_results['{recipe}'] = ingred_by_id
 
-#     for recipe in recipes:
-#         if ingred in recipe.ingredients:
-#             rec_inc_ing.append(recipe)
+#         recipe_list = get_recipes_by_ingredient(ingredient_id)
+#         recipe_search_results.extend(recipe_list)
 
-#     return rec_inc_ing
+#     return recipe_search_results
 ###
 
 
