@@ -4,7 +4,7 @@
 {% block body %}
   <h1>Create a Recipe</h1>
 
-  <form action="/create_recipe" method="GET">
+  <form action="/create_recipe" method="POST">
     <p>
       <b>Recipe Name:</b> <input type="text" name="recipe_name" placeholder="ex: Fruit Salad" required>*
     </p>
@@ -36,7 +36,7 @@
 
     <p>
       <div><b>Notes:</b></div>
-      <textarea name="notes" rows="5" cols="80" wrap="hard" placeholder="ex: Some people toss fruit in poppy seed dressing or honey and yogurt, but I like mine plain." required></textarea>
+      <textarea name="notes" rows="5" cols="80" wrap="hard" placeholder="ex: Some people toss fruit in poppy seed dressing or honey and yogurt, but I like mine plain."></textarea>
     </p>
 
     <p>

@@ -62,34 +62,35 @@ def view_recipes_with_ingredients(ingredient_ids):
 
 
 
-@app.route('/create_recipe', methods=['GET'])
+@app.route('/create_recipe', methods=['POST', 'GET'])
 def create_new_recipe():
     """Create a new recipe"""
 
-    recipe_name = request.args.get('recipe_name')
-    originator = request.args.get('originator')
-    ingredients = request.args.get('ingredients')
-    directions = request.args.get('directions')
-    notes = request.args.get('notes')
-    tags = request.args.get('tags')
-    rating = request.args.get('rating')
+    if request.method == 'POST':
+        recipe_name = request.form.get('recipe_name')
+        originator = request.form.get('originator')
+        ingredients = request.form.get('ingredients')
+        directions = request.form.get('directions')
+        notes = request.form.get('notes')
+        tags = request.form.get('tags')
+        rating = request.form.get('rating')
 
-    created_recipe = crud.create_recipe(recipe_name, originator, directions)
-    crud.create_note(created_recipe.recipe_id, notes)
-    crud.create_rating(created_recipe.recipe_id, rating)
+        created_recipe = crud.create_recipe(recipe_name, originator, directions)
+        crud.create_note(created_recipe.recipe_id, notes)
+        crud.create_rating(created_recipe.recipe_id, rating)
 
-    ###
-    tag_list = crud.string_to_list(tags)
-    crud.add_or_create_tag(tag_list, created_recipe)
+        ###
+        tag_list = crud.string_to_list(tags)
+        crud.add_or_create_tag(tag_list, created_recipe)
 
-    ing_list = crud.string_to_list(ingredients)
-    crud.add_or_create_ing(ing_list, created_recipe)
-    ###
+        ing_list = crud.string_to_list(ingredients)
+        crud.add_or_create_ing(ing_list, created_recipe)
+        ###
 
-    ##make POST and request.form.get when sure it works
+        return redirect('/recipes')
 
-
-    return render_template('create_recipe.html')##redirect
+    else:
+        return render_template('create_recipe.html')
 
 
 

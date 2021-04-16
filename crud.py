@@ -204,7 +204,7 @@ def add_or_create_tag(tag_list, recipe):
 
     for tag in tag_list:
         exist_tag = get_recipe_tag_by_name(tag)
-        if exist tag:
+        if exist_tag:
             add_tag_to_recipe(exist_tag.tag_id, recipe.recipe_id)
         else:
             t = create_recipe_tag(tag)
