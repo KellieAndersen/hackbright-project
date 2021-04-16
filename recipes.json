@@ -34,5 +34,14 @@
         "tags": ["lunch", "hot food"],
         "rating": 3,
         "note":"" 
+    },
+    {
+        "recipe_name": "Chicken Broccoli Casserole",
+        "originator": "Mom",
+        "ingredients": ["Cream of Chicken Soup", "Plain Yogurt", "Ritz Crackers", "Chicken", "Broccoli"],
+        "directions": "Ingredients: 1 can of cream of chicken soup, 1 cup plain yogurt, shredded chicken, 10 oz frozen broccoli, 1 or 2 Ritz crackers, crushed       Directions: 1. Mix together soup, yogurt, broccoli, and chicken 2. Put in a 13in x 9in pan. 3. Top with crushed crackers 4. Bake at 350 F for 40-60 minutes or until heated throughout.",
+        "tags":["casserole", "dinner"],
+        "rating": "5",
+        "note": "We like to include chopped onions too. We like yellow onions."
     }
 ]

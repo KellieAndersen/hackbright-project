@@ -3,13 +3,13 @@
 
 {% block body %}
   <h1>Search for Recipes Including Certain Ingredients</h1>
-
+  <h4>This search will return all recipes that contain any of the specified ingredients</h4>
   <form action="/search_for_recipes_with_ing" method="GET">
 
     <h2>Enter Ingredients You Want to Include:</h2>
     <h3>Please capitalize ingredient words and separate ingredients with commas</h3>
     <p>
-      Ingredients: <input type="text" name="ingredients" required>
+      Ingredients: <textarea name="ingredients" rows="5" cols="80" required></textarea>
     </p>
 
 <!-- Ideally the results should also include a list of what ingredients were matched -->

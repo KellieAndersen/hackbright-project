@@ -51,13 +51,20 @@ def view_recipes_by_ingredient(ingredient_id):
     return render_template('ingredient_recipes.html', see_recipes=recipes_by_ing, ingredient=ingredient)##
 
 ####
-@app.route('/search_for_recipes_with_ing', methods=['GET'])
-def view_recipes_with_ingredients(ingredient_ids):
-    """Show all the recipes that contain any of the specified ingredients"""
+@app.route('/search_recipes', methods=['GET'])
+def search_for_recipes():
+    """Show search form"""
 
-    recipes_include_ings = crud.get_recipes_by_ingredient(ingredient_id)
+    return render_template('search_with_ingredients.html')
 
-    return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=ingredients)
+
+# @app.route('/search_for_recipes_with_ing', methods=['GET'])
+# def view_recipes_with_ingredients(ingredient_ids):
+#     """Show all the recipes that contain any of the specified ingredients"""
+
+#     recipes_include_ings = crud.get_recipes_by_ingredient(ingredient_id)
+
+#     return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results , ingredients=ingredients)
 ####
 
 
@@ -76,18 +83,22 @@ def create_new_recipe():
         rating = request.form.get('rating')
 
         created_recipe = crud.create_recipe(recipe_name, originator, directions)
-        crud.create_note(created_recipe.recipe_id, notes)
-        crud.create_rating(created_recipe.recipe_id, rating)
+        if notes:
+            crud.create_note(created_recipe.recipe_id, notes)
 
-        ###
-        tag_list = crud.string_to_list(tags)
-        crud.add_or_create_tag(tag_list, created_recipe)
+        if rating:
+            crud.create_rating(created_recipe.recipe_id, int(rating))
 
         ing_list = crud.string_to_list(ingredients)
         crud.add_or_create_ing(ing_list, created_recipe)
         ###
+        if tags:
+            tag_list = crud.string_to_list(tags)
+            crud.add_or_create_tag(tag_list, created_recipe)
 
-        return redirect('/recipes')
+        ###
+
+        return redirect(f'/recipes/{created_recipe.recipe_id}')
 
     else:
         return render_template('create_recipe.html')
