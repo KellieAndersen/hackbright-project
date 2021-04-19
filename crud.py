@@ -149,6 +149,14 @@ def all_tags():
     return Recipe_Tags.query.all() ##
 
 
+def alphabetical_tags():
+    """Return all tags in alphabetical order""" 
+
+    q = Tags.query
+        
+    return q.order_by('tag_name')
+
+
 def get_recipe_tag_by_id(tag_id):
     """Find recipe tag using id"""
 

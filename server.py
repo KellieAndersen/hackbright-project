@@ -41,14 +41,6 @@ def view_ingredients():
     return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
-@app.route('/tags')
-def view_tags():
-    """View all recipe tags"""
-
-    tags =crud.
-    return render_template('all_tags.html', see_tags=tags)
-
-
 @app.route('/ingredients/<ingredient_id>')
 def view_recipes_by_ingredient(ingredient_id):
     """Show recipes using a specific ingredient"""
@@ -57,6 +49,26 @@ def view_recipes_by_ingredient(ingredient_id):
     recipes_by_ing = crud.get_recipes_by_ingredient(ingredient_id)
 
     return render_template('ingredient_recipes.html', see_recipes=recipes_by_ing, ingredient=ingredient)##
+
+
+@app.route('/tags')
+def view_tags():
+    """View all recipe tags"""
+
+    tags =crud.alphabetical_tags()
+    
+    return render_template('all_tags.html', see_tags=tags)
+
+
+@app.route('/tags/<tag_id>')
+def view_recipes_by_tag(tag_id):
+    """Show recipes using a specific tag"""
+
+    tag = crud.get_recipe_tag_by_id(tag_id)
+    recipes_by_tag = crud.get_recipes_by_tag(tag_id)
+
+    return render_template('tag_recipes.html', see_recipes=recipes_by_tag, tag=tag)
+
 
 ####
 @app.route('/search_recipes')
