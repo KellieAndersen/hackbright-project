@@ -41,6 +41,14 @@ def view_ingredients():
     return render_template('all_ingredients.html', see_ingredients=ingredients)
 
 
+@app.route('/tags')
+def view_tags():
+    """View all recipe tags"""
+
+    tags =crud.
+    return render_template('all_tags.html', see_tags=tags)
+
+
 @app.route('/ingredients/<ingredient_id>')
 def view_recipes_by_ingredient(ingredient_id):
     """Show recipes using a specific ingredient"""

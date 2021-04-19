@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}All Tas{% endblock %}
+
+{% block body %}
+    <h1><u>All Tags</u></h1>
+    <h3><i>Click an tag to see all recipes that have that tag</i></h3>
+    <ul>
+        {% for tag in see_tags %}
+            <li>
+                <p>
+                    <a href="/ingredients/{{ ingredient.ingredient_id }}">{{ ingredient.ingredient_name }}</a>
+                </p>
+            </li>   
+        {% endfor %}
+    </ul>
+{% endblock body %}
