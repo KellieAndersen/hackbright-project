@@ -60,7 +60,7 @@ def get_recipes_by_ingredient(ingredient_id):
 def get_recipes_by_tag(tag_id):
     """Return all recipes with a specific tag"""
 
-    tag = get_tag_by_id(tag_id)
+    tag = get_recipe_tag_by_id(tag_id)
     recipes = alphabetical_recipes()
     rec_by_tag = []
 
@@ -69,9 +69,6 @@ def get_recipes_by_tag(tag_id):
             rec_by_tag.append(recipe)
 
     return rec_by_tag
-
-
-
 
 
 def create_ingredient(ingredient_name):
@@ -168,7 +165,7 @@ def all_tags():
 def alphabetical_tags():
     """Return all tags in alphabetical order""" 
 
-    q = Tags.query
+    q = Recipe_Tags.query
         
     return q.order_by('tag_name')
 
