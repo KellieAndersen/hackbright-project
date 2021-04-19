@@ -57,6 +57,22 @@ def get_recipes_by_ingredient(ingredient_id):
     return rec_inc_ing
 
 
+def get_recipes_by_tag(tag_id):
+    """Return all recipes with a specific tag"""
+
+    tag = get_tag_by_id(tag_id)
+    recipes = alphabetical_recipes()
+    rec_by_tag = []
+
+    for recipe in recipes:
+        if tag in recipe.tags:
+            rec_by_tag.append(recipe)
+
+    return rec_by_tag
+
+
+
+
 
 def create_ingredient(ingredient_name):
     """Create and return a new ingredient"""

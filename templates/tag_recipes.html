@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Recipes with Tag {{ tag.tag_name }}{% endblock %}
+
+{% block body %}
+    <h1>Recipes with Tag {{ tag.tag_name }}</h1>
+    <ul>
+        {% for recipe in see_recipes %}
+            <li>
+                <p>
+                    <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</a> 
+                    <!-- ^^^ links to recipe detail pages ^^^ -->
+                </p>
+            </li>   
+        {% endfor %}
+    </ul>
+{% endblock body %}
