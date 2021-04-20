@@ -205,7 +205,9 @@ def get_recipes_by_multiple_ing(ingredient_list):
         recipe_list = get_recipes_by_ingredient(ingredient_id)
         recipe_search_results.extend(recipe_list)
 
-    return recipe_search_results
+    recipe_search_results_set = set(recipe_search_results)
+
+    return recipe_search_results_set
     ### might want to create a dictionary- keys of recipes, values of matched ingredients
 
 
