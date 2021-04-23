@@ -58,8 +58,27 @@ class RecipeAppTests(unittest.TestCase):
         self.assertIn(b"Enter Ingredients You Want", result.data)
 
 
-    def test_create_recipe():
-        """Test that """
+    def test_recipe_form_submission(self):
+        """Test to see if submitting the create recipe form takes the user to the recipe details page"""
 
+        client = server.app.test_client()
+        result = client.post("/create_recipe", data = {"recipe_name":"Food Tester", "originator":"Tester1", "ingredients"="Testing Food, Food Testing, Tasty Test", "directions":"Taste test food. Yum.", "notes":"test notes", "tags":"tester, test food", "rating":"1"})
+        self.assertIn(b"This is recipe #", result.data)
+# #######
+
+    def test
+
+
+
+    # def test_create_recipe():
+    #     """Test that """
+
+# Things to test:
+# does it prevent form submission if user doesn't enter required field?
+# 
 
 #Test for 
+
+
+if __name__ == "__main__":
+    unittest.main()
