@@ -130,6 +130,14 @@ def create_new_recipe():
         return render_template('create_recipe.html')
 
 
+@app.route('/edit_recipe', methods = ['POST', 'GET'])
+    def edit_recipe(recipe_id):
+        """Edit a recipe that already exists"""
+
+
+        return redirect(f'/recipes/{recipe.recipe_id}')
+
+
 
 
 
