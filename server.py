@@ -131,11 +131,15 @@ def create_new_recipe():
 
 
 @app.route('/edit_recipe', methods = ['POST', 'GET'])
-    def edit_recipe(recipe_id):
-        """Edit a recipe that already exists"""
+def edit_recipe(recipe_id):
+    """Edit a recipe that already exists"""
 
+        if request.method == 'POST'
+            
+            return redirect(f'/recipes/{recipe.recipe_id}')
 
-        return redirect(f'/recipes/{recipe.recipe_id}')
+        else:
+            return render_template('edit_recipe_form.html')
 
 
 
