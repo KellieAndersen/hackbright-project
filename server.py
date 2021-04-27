@@ -130,16 +130,45 @@ def create_new_recipe():
         return render_template('create_recipe.html')
 
 
-@app.route('/edit_recipe', methods = ['POST', 'GET'])
+
+##### Need to make a replace crud function for all of this.
+
+@app.route('/edit_recipe/<recipe_id>', methods = ['POST', 'GET'])
 def edit_recipe(recipe_id):
     """Edit a recipe that already exists"""
 
-        if request.method == 'POST'
-            
-            return redirect(f'/recipes/{recipe.recipe_id}')
+    recipe = crud.get_recipe_by_id(recipe_id)
 
-        else:
-            return render_template('edit_recipe_form.html')
+    if request.method == 'POST':
+        recipe_name = request.form.get('recipe_name')
+        originator = request.form.get('originator')
+        ingredients = request.form.get('ingredients')
+        directions = request.form.get('directions')
+        notes = request.form.get('notes')
+        tags = request.form.get('tags')
+        rating = request.form.get('rating')
+
+        edited_recipe = crud.create_recipe(recipe_name, originator, directions)
+        if notes:
+            crud.create_note(edited_recipe.recipe_id, notes)
+
+        if rating:
+            crud.create_rating(edited_recipe.recipe_id, int(rating))
+
+        ing_list = crud.string_to_list(ingredients)
+        crud.add_or_create_ing(ing_list, created_recipe)
+        ###
+        if tags:
+            tag_list = crud.string_to_list(tags)
+            crud.add_or_create_tag(tag_list, created_recipe)
+
+        ###
+
+        return redirect(f'/recipes/{edited_recipe.recipe_id}')
+
+    else:
+
+        return render_template('edit_recipe_form.html', recipe=recipe)
 
 
 
