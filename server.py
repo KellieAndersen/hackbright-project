@@ -162,7 +162,7 @@ def edit_recipe(recipe_id):
             tag_list = crud.string_to_list(tags)
             crud.add_or_create_tag(tag_list, created_recipe)
 
-        ###
+        ### need a replace recipe func in crud to call
 
         return redirect(f'/recipes/{edited_recipe.recipe_id}')
 

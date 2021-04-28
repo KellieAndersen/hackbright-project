@@ -263,6 +263,40 @@ def add_or_create_ing(ing_list, recipe):
             created_ing = create_ingredient(ing)
             add_ingredient_to_recipe(created_ing.ingredient_id, recipe.recipe_id)
 
+###################
+def replace_recipe(recipe_id, recipe_name, originator, directions):
+    """Replace part or all of a recipe"""
+
+    recipe = get_recipe_by_id(recipe_id)
+
+    recipe.recipe_name = recipe_name
+    recipe.originator = originator
+    recipe.directions = directions
+
+    db.session.commit()
+
+    return recipe
+
+
+# def remove_all_ingredients(recipe_id):
+#     """Remove all the ingredients from a recipe"""
+
+#     recipe = get_recipe_by_id(recipe_id)
+
+#     q = Recipe_Ingredient_Relation.query
+
+#     recipe_ingr_relation = q.filter(Recipe_Ingredient_Relation.recipe_id == recipe_id).all()
+
+
+def replace_ingredients(recipe_id, ingredient_list):
+    """Replace one or all of the ingredients in a recipe"""
+
+    recipe = get_recipe_by_id(recipe_id)
+    recipe.ingredients
+
+    ingredients = string_to_list(ingredient_list)
+
+
 
 
 if __name__ == '__main__':
