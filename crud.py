@@ -264,7 +264,7 @@ def add_or_create_ing(ing_list, recipe):
             add_ingredient_to_recipe(created_ing.ingredient_id, recipe.recipe_id)
 
 ###################
-def replace_recipe(recipe_id, recipe_name, originator, directions):
+def update_recipe(recipe_id, recipe_name, originator, directions):
     """Replace part or all of a recipe"""
 
     recipe = get_recipe_by_id(recipe_id)
@@ -273,9 +273,34 @@ def replace_recipe(recipe_id, recipe_name, originator, directions):
     recipe.originator = originator
     recipe.directions = directions
 
+    # db.session.add(recipe)
     db.session.commit()
 
     return recipe
+
+
+def update_rating(recipe_id, new_rating):
+    """Replace rating of a recipe"""
+
+    recipe = get_recipe_by_id(recipe_id)
+
+    recipe.rating = new_rating
+
+    # db.session.add(rating)
+    db.session.commit()
+
+
+def update_note(recipe_id, new_note):
+    """Update existing note"""
+
+    recipe = get_recipe_by_id(recipe_id)
+
+    recipe.note = new_note
+
+    # db.session.add(note)
+    db.session.commit()
+
+    return note
 
 
 # def remove_all_ingredients(recipe_id):

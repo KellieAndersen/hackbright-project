@@ -148,19 +148,19 @@ def edit_recipe(recipe_id):
         tags = request.form.get('tags')
         rating = request.form.get('rating')
 
-        edited_recipe = crud.create_recipe(recipe_name, originator, directions)
+        edited_recipe = crud.update_recipe(recipe_id, recipe_name, originator, directions)
         if notes:
-            crud.create_note(edited_recipe.recipe_id, notes)
+            crud.update_note(edited_recipe.recipe_id, notes)
 
         if rating:
-            crud.create_rating(edited_recipe.recipe_id, int(rating))
+            crud.update_rating(edited_recipe.recipe_id, int(rating))
 
         ing_list = crud.string_to_list(ingredients)
-        crud.add_or_create_ing(ing_list, created_recipe)
+        crud.add_or_create_ing(ing_list, edited_recipe)
         ###
         if tags:
             tag_list = crud.string_to_list(tags)
-            crud.add_or_create_tag(tag_list, created_recipe)
+            crud.add_or_create_tag(tag_list, edited_recipe)
 
         ### need a replace recipe func in crud to call
 
