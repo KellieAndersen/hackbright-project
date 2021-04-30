@@ -4,7 +4,7 @@
 {% block body %}
   <h1>Edit Recipe</h1>
 
-  <form action="/edit_recipe" method="POST">
+  <form action="/edit_recipe/{{ recipe.recipe_id }}" method="POST">
     <p>
       <b>Recipe Name:</b> <input type="text" name="recipe_name" value="{{ recipe.recipe_name }}" required>*
     </p>

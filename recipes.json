@@ -43,5 +43,14 @@
         "tags":["casserole", "dinner"],
         "rating": "5",
         "note": "We like to include chopped onions too. We like yellow onions."
+    },
+     {
+        "recipe_name": "Strawberry Spinach Salad",
+        "originator": "Great Aunt Bonnie",
+        "ingredients": ["Sugar", "Sesame Seeds", "Poppy Seeds", "Onion", "Worcestershire Sauce", "Paprika", "Vegetable Oil", "Apple Cider Vinegar", "Spinach", "Strawberries"],
+        "directions": "Ingredients: 1/2 cup sugar, 2 Tbsp sesame seeds, 1 Tbsp poppy seeds, 1.5 tsp minced fresh onion, 1/4 tsp Worcestershire sauce, 1/4 tsp paprika, 1/2 cup vegetable oil, 1/4 cup apple cider vinegar, 2 bunches spinach, 1 qt strawberries, sliced or chopped      Directions: 1. Blend all ingredients except spinach and strawberries together until thick. This is the dressing. 2. Toss dressing with spinach and strawberries. 3. Enjoy!",
+        "tags":["salad", "summer"],
+        "rating": "5",
+        "note": "Eat immediately. Spinach tends to soak up the dressing after a while which makes it soggy and slimy. Not appealing."
     }
 ]

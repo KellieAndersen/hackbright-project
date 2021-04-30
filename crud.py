@@ -1,6 +1,6 @@
 """CRUD operations"""
 
-from model import db, Recipes, Ingredients, Ratings, Notes, Recipe_Tags, Tag_Recipe_Relation, connect_to_db
+from model import db, Recipes, Ingredients, Ratings, Notes, Recipe_Tags, Tag_Recipe_Relation, Recipe_Ingredient_Relation, connect_to_db
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -273,7 +273,7 @@ def update_recipe(recipe_id, recipe_name, originator, directions):
     recipe.originator = originator
     recipe.directions = directions
 
-    # db.session.add(recipe)
+    db.session.add(recipe)
     db.session.commit()
 
     return recipe
@@ -297,29 +297,60 @@ def update_note(recipe_id, new_note):
 
     recipe.note = new_note
 
-    # db.session.add(note)
+    # db.session.add()
     db.session.commit()
 
-    return note
+    return recipe.note
 
 
-# def remove_all_ingredients(recipe_id):
-#     """Remove all the ingredients from a recipe"""
 
-#     recipe = get_recipe_by_id(recipe_id)
-
-#     q = Recipe_Ingredient_Relation.query
-
-#     recipe_ingr_relation = q.filter(Recipe_Ingredient_Relation.recipe_id == recipe_id).all()
-
-
-def replace_ingredients(recipe_id, ingredient_list):
-    """Replace one or all of the ingredients in a recipe"""
+# Need a func: looks through ingredients, are there new ones? add them.
+# are there ones missing? remove relationship table bit
+# .... same thing for tags   (use set)
+def update_recipe_ing(recipe_id, ingredients_list):
+    """Update the ingredients of a recipe"""
 
     recipe = get_recipe_by_id(recipe_id)
-    recipe.ingredients
 
-    ingredients = string_to_list(ingredient_list)
+    ingredients_set = set(string_to_list(ingredients_list))
+    for ingredient in recipe.ingredients:
+        if ingredient.ingredient_name in ingredients_set:
+            ingredients_set.remove(ingredient.ingredient_name)
+        else:
+            # delete relationship (object)
+            ing_rel_to_remove = Recipe_Ingredient_Relation.query.filter(Recipe_Ingredient_Relation.ingredient_id == ingredient.ingredient_id).first()
+            db.session.delete(ing_rel_to_remove)
+
+    if ingredients_set:
+        new_ing_list = list(ingredients_set)
+        add_or_create_ing(new_ing_list, recipe)
+
+    # db.session.add()
+    db.session.commit()
+    return recipe.ingredients
+
+
+def update_tags(recipe_id, tags_list):
+    """Update the tags of a recipe"""
+
+    recipe = get_recipe_by_id(recipe_id)
+
+    tags_set = set(string_to_list(tags_list))
+    for tag in recipe.tags:
+        if tag.tag_name in tags_set:
+            tags_set.remove(tag.tag_name)
+        else:
+            # delete relationship (object)
+            tag_rel_to_remove = Tag_Recipe_Relation.query.filter(Tag_Recipe_Relation.tag_id == tag.tag_id).first()
+            db.session.delete(tag_rel_to_remove)
+
+    if tags_set:
+        new_tags_list = list(tags_set)
+        add_or_create_ing(new_tags_list, recipe)
+
+    db.session.commit()
+    return recipe.tags
+
 
 
 
