@@ -282,27 +282,28 @@ def update_recipe(recipe_id, recipe_name, originator, directions):
 def update_rating(recipe_id, new_rating):
     """Replace rating of a recipe"""
 
-    recipe = get_recipe_by_id(recipe_id)
+    # recipe = get_recipe_by_id(recipe_id)
+    rating = Ratings.query.filter(Ratings.recipe_id == recipe_id).first()
 
-    recipe.rating = new_rating
+    rating.rating = new_rating
 
-    # db.session.add(rating)
+
+    db.session.add(rating)
     db.session.commit()
 
 
 def update_note(recipe_id, new_note):
     """Update existing note"""
 
-    recipe = get_recipe_by_id(recipe_id)
-    print('hello')
+    # recipe = get_recipe_by_id(recipe_id)
+    note = Notes.query.filter(Notes.recipe_id == recipe_id).first()
 
-    recipe.note = new_note
-    print(recipe.note)
+    note.note = new_note
 
-    # db.session.add(recipe.note)
+    db.session.add(note)
     db.session.commit()
 
-    return recipe.note
+    return note
 
 
 
