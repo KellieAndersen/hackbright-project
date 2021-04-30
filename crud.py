@@ -294,10 +294,12 @@ def update_note(recipe_id, new_note):
     """Update existing note"""
 
     recipe = get_recipe_by_id(recipe_id)
+    print('hello')
 
     recipe.note = new_note
+    print(recipe.note)
 
-    # db.session.add()
+    # db.session.add(recipe.note)
     db.session.commit()
 
     return recipe.note
@@ -346,7 +348,7 @@ def update_tags(recipe_id, tags_list):
 
     if tags_set:
         new_tags_list = list(tags_set)
-        add_or_create_ing(new_tags_list, recipe)
+        add_or_create_tag(new_tags_list, recipe)
 
     db.session.commit()
     return recipe.tags

@@ -155,13 +155,11 @@ def edit_recipe(recipe_id):
         if rating:
             crud.update_rating(edited_recipe.recipe_id, rating)
 
-        # ing_list = crud.string_to_list(ingredients)
-        # crud.add_or_create_ing(ing_list, edited_recipe)
+
         crud.update_recipe_ing(edited_recipe.recipe_id, ingredients)
         ###
         if tags:
-            # tag_list = crud.string_to_list(tags)
-            # crud.add_or_create_tag(tag_list, edited_recipe)
+
             crud.update_tags(edited_recipe.recipe_id, tags)
 
         ### need a replace recipe func in crud to call
