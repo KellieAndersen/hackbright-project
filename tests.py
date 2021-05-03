@@ -5,7 +5,8 @@ from model import connect_to_db, db
 from flask import (Flask, session)
 import server
 import unittest
-
+import json
+import test_seed 
 
 
 class RecipeAppTests(unittest.TestCase):
@@ -14,11 +15,16 @@ class RecipeAppTests(unittest.TestCase):
     def setUp(self):
         """Code to run before each test"""
 
+        # db.session.remove()
+        # db.drop_all()
+        # db.engine.dispose()
+
         self.client = server.app.test_client()
         server.app.config['TESTING'] = True
         connect_to_db(server.app) #"postgresql:///testdb")
         db.create_all()
-        # example_data()
+        test_seed.create_test_data()
+        
 
 
     def tearDown(self):
