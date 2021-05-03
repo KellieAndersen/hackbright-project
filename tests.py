@@ -9,19 +9,16 @@ import json
 import test_seed 
 
 
-class RecipeAppTests(unittest.TestCase):
-    """Tests for the app"""
+class RecipeAppIntegrationTests(unittest.TestCase):
+    """Integration tests for the app"""
 
     def setUp(self):
         """Code to run before each test"""
 
-        # db.session.remove()
-        # db.drop_all()
-        # db.engine.dispose()
-
         self.client = server.app.test_client()
         server.app.config['TESTING'] = True
-        connect_to_db(server.app) #"postgresql:///testdb")
+
+        connect_to_db(server.app)
         db.create_all()
         test_seed.create_test_data()
         
@@ -76,15 +73,6 @@ class RecipeAppTests(unittest.TestCase):
         result = self.client.get("/search_recipes")
         self.assertIn(b"Enter Ingredients You Want", result.data)
 ###########
-    def test_search_results(self):
-        """Tests to see if the search results appear properly"""
-
-        client = server.app.test_client()
-        result = client.get("search_for_recipes_with_ing", data = {"ingredients":"Chicken, Butter"}, follow_redirects = True)
-        self.assertIn(b"Butter", result.data)
-        self.assertIn(b"Chicken", result.data)
-        self.assertIn(b"Search Results", result.data)
-
 
     def test_recipe_form_submission(self):
         """Test to see if submitting the create recipe form takes the user to the recipe details page"""
@@ -92,20 +80,47 @@ class RecipeAppTests(unittest.TestCase):
         client = server.app.test_client()
         result = client.post("/create_recipe", data = {"recipe_name":"Food Tester", "originator":"Tester1", "ingredients":"Testing Food, Food Testing, Tasty Test", "directions":"Taste test food. Yum.", "notes":"test notes", "tags":"tester, test food", "rating":"1"}, follow_redirects = True)
         self.assertIn(b"This is recipe #", result.data)
-# #######
+
+
+    def test_recipe_edit_form_submission(self):
+        """Test to see if submitting the edit recipe form takes the user to the recipe details page including edits"""
+
+        client = server.app.test_client()
+        result = client.post("/edit_recipe/2", data = {
+            "recipe_name":"Grilled Cheese with Bacon", 
+            "originator":"Lana", 
+            "ingredients":"Bread, Cheese, Butter, Bacon, Tomato", 
+            "directions":"Ingredients: 2 slices of bread, 3 slices of your favorite cheese, 2 Tbsp butter, mayo, several slices of cooked bacon based on preference     Directions: 1. Spread inside of bread slices with butter. Put slices of cheese and bacon between breaed pieces.   2. Spread mayo on the outside of bread slices.   3. Melt a pat of butter on a hot griddle. Put sandwich on hot griddle after butter melts and toast to a golden brown.   4. Flip sandwich and toast other side until golden brown and the cheese has melted.   5. Turn heat off and plate sandwich with desired side(s). Enjoy your sandwich.",
+            "notes":"", 
+            "tags":"lunch, hot food",
+            "rating":"4"}, follow_redirects = True)
+        self.assertIn(b"Tomato", result.data)
+        self.assertNotIn(b"Mayo", result.data)
+
+
+    # def test_get_recipes_by_multiple_ing(self):
+
+    #     assert list(get_recipes_by_multiple_ing(["3", "16"])) == ["<The recipe is Grilled Cheese with Bacon, from the kitchen of Lana, recipe_id 2>", "<The recipe is Chicken Broccoli Casserole, from the kitchen of Mom, recipe_id 4>", "<The recipe is Abelskiver, from the kitchen of Mom, recipe_id 1>"]
+    #     # < The recipe is {self.recipe_name}, from the kitchen of {self.originator}, recipe_id {self.recipe_id}>
+
+
+class RecipeAppUnitTests(unittest.TestCase):
+    """Unit tests for the app"""
+    
+    def setUp(self):
+        """Code run before each test"""
+
+        self.client = server.app.test_client()
+        server.app.config['TESTING'] = True
+
+
+    def test_string_to_list(self):
+        """tests to see that strings split on ' ,' """
+
+        assert string_to_list("faith, hope, love") == ["faith", "hope", "love"]
+
 
     # def test
-
-
-
-    # def test_create_recipe():
-    #     """Test that """
-
-# Things to test:
-# does it prevent form submission if user doesn't enter required field?
-# 
-
-#Test for 
 
 
 if __name__ == "__main__":
