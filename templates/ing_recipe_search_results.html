@@ -5,9 +5,9 @@
     <h1>Search Results</h1>
     <ul>
         {% for recipe in see_recipes %}
-            <li>
-                <p>
-                    <a href="/recipes/{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</a> 
+
+            <p>
+            <a href="/recipes/{{ recipe.recipe_id }}"><h4>{{ recipe.recipe_name }}</h4></a> 
                     <div>
                         <i>Includes ingredients:</i>
                         {% for ingredient in recipe.ingredients %}
@@ -16,7 +16,7 @@
                     </div>
                     <!-- ^^^ should include list of matched ingredients under recipes ^^^ -->
                 </p>
-            </li>   
+
         {% endfor %}
     </ul>
 {% endblock body %}

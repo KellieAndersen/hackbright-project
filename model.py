@@ -159,6 +159,21 @@ class Ingredients(db.Model):
 
 #     def __repr__(self):
 #         return f'<ingredient tag id {self.i_tag_id} is {self.i_tag_name}>'
+
+
+# def test_data():
+#     """Sample data to use for tests"""
+
+#     Recipes.query.delete()
+#     Ingredients.query.delete()
+    
+#     #recipe object sample data#
+#     abelskiver = Recipes(recipe_name = "Abelskiver",
+#                         originator = "Mom",
+#                         directions = "Ingredients:    4 or 5 eggs, seperated, 1/4 cup sugar, 3 Tbsp butter, melted, 3/4 cup milk, 1  1/2 cups Bisquick, 1/4 tsp. baking powder  Directions:  1. Combine all ingredients together except for the egg whites.    2. Beat eggs whites until stiff and fold into mixture from previous step.    3. Heat Abelskiver pan. Put a bit of butter in each cup. Add a scoop of batter into each cup, about 1/2 to 2/3 full (it rises). Turn when the bottom gets golden brown with a knitting needle.   4. Finish cooking other side.")
+
+#     #ingredient object sample data#
+#     abel_ing_1 = Ingredients(ingredient_name = "")
     
 
 
