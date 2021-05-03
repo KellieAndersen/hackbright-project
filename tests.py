@@ -1,13 +1,16 @@
 """Tests for Recipe App"""
 
-from crud.py import (create_recipe, all_recipes, alphabetical_recipes, get_recipe_by_name, get_recipe_by_id, get_recipes_by_ingredient, get_recipes_by_tag, create_ingredient, add_ingredient_to_recipe, all_ingredients, alphabetical_ingredients, get_ingredient_by_id, get_ingredient_by_name, create_rating, create_note, create_recipe_tag, all_tags, alphabetical_tags, get_recipe_tag_by_id, get_recipe_tag_by_name, add_tag_to_recipe, get_recipes_by_multiple_ing, string_to_list, add_or_create_tag, add_or_create_ing )
-from server import app
+from crud import (create_recipe, all_recipes, alphabetical_recipes, get_recipe_by_name, get_recipe_by_id, get_recipes_by_ingredient, get_recipes_by_tag, create_ingredient, add_ingredient_to_recipe, all_ingredients, alphabetical_ingredients, get_ingredient_by_id, get_ingredient_by_name, create_rating, create_note, create_recipe_tag, all_tags, alphabetical_tags, get_recipe_tag_by_id, get_recipe_tag_by_name, add_tag_to_recipe, get_recipes_by_multiple_ing, string_to_list, add_or_create_tag, add_or_create_ing, update_recipe, update_rating, update_note, update_recipe_ing, update_tags)
+from model import connect_to_db
+from flask import Flask
+import server
 import unittest
+app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# from server.py import ()
 
 class RecipeAppTests(unittest.TestCase):
-    """Tests for"""
+    """Tests for the app"""
 
     def setUp(self):
         """Code to run before each test"""
@@ -40,21 +43,21 @@ class RecipeAppTests(unittest.TestCase):
     def test_tag_list_page(self):
         """Tests to see if the tag list page can be reached"""
 
-        results = self.client.get("/tags")
+        result = self.client.get("/tags")
         self.assertIn(b"Click a tag to see", result.data)
 
 
     def test_create_recipe_page(self):
         """Tests to see if the page for new recipe creation can be reached"""
 
-        results = self.client.get("/create_recipe")
+        result = self.client.get("/create_recipe")
         self.assertIn(b"separate tags with commas", result.data)
 
 
     def test_search_page(self):
         """Tests to see if the search page can be reached"""
 
-        results = self.client.get("/search_for_recipes_with_ing")
+        result = self.client.get("/search_for_recipes_with_ing")
         self.assertIn(b"Enter Ingredients You Want", result.data)
 
 
@@ -62,11 +65,11 @@ class RecipeAppTests(unittest.TestCase):
         """Test to see if submitting the create recipe form takes the user to the recipe details page"""
 
         client = server.app.test_client()
-        result = client.post("/create_recipe", data = {"recipe_name":"Food Tester", "originator":"Tester1", "ingredients"="Testing Food, Food Testing, Tasty Test", "directions":"Taste test food. Yum.", "notes":"test notes", "tags":"tester, test food", "rating":"1"})
+        result = client.post("/create_recipe", data = {"recipe_name":"Food Tester", "originator":"Tester1", "ingredients":"Testing Food, Food Testing, Tasty Test", "directions":"Taste test food. Yum.", "notes":"test notes", "tags":"tester, test food", "rating":"1"}, follow_redirects = True)
         self.assertIn(b"This is recipe #", result.data)
 # #######
 
-    def test
+    # def test
 
 
 
@@ -81,4 +84,5 @@ class RecipeAppTests(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    connect_to_db(app)
     unittest.main()
