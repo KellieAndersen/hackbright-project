@@ -1,19 +1,44 @@
 h1,
 h2,
-h3,
+h3 {
+    font-family: 'Kurale', sans-serif; 
+    font-weight: 600;
+}
 h4, 
 h5,
 h6,
+
 title {
     font-family: 'Playball', sans-serif;
+    color: #92672C;
 }
 body {
     font-family: 'Cormorant Infant', serif;
     font-weight: 700;
     font-size: 1.5em;
+    color: #92672C;
+    background-color: #DFD87F;
 }
 nav {
     font-family: 'Kurale', sans-serif;
+    /* color: #DFD87F;  */
+    background-color: #92672C;
+}
+.navbar-nav>li>a, .navbar-dark .navbar-nav .nav-link {
+	color: #DFD87F;
+    font-family: 'Kurale', sans-serif;
+}
+ul>a {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 700;
+    font-size: 1.25em;
+    color: #a87836;
+}
+a {
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 700;
+    font-size: 1.1em;
+    color: #a87836; 
 }
 .feature {
     tezt-align: center;

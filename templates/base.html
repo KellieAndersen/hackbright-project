@@ -12,14 +12,13 @@
     <title>
       {% block title %}{% endblock %}
     </title>
-
     {% block head %}{% endblock %}
   </head>
   <body>
 
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand">Recipe Rabbit</a>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand"><h3>Recipe Rabbit</h3></a>
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> -->
@@ -35,6 +34,7 @@
         <!-- </div> -->
       </nav>
     {% for msg in get_flashed_messages() %}
+
       <p class="flash-msg">
         {{ msg }}
       </p>
