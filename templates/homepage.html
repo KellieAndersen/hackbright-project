@@ -2,26 +2,33 @@
 {% block title %}Recipes Home{% endblock %}
 
 {% block body %}
+<ul></ul>
 <div align="center">
   <img src="/static/recipe_rabbit_logo.png" width="425" alt="Logo">
 </div>
 <div align="center">
-  <h1>Welcome! Now let's get cookin'!</h1>
+  <h1>Welcome! Now let's get cooking!</h1>
+
 
   <h2><u>Options:</u></h2>
-  <!-- <ul> -->
-    <!-- <li><a href="/recipes">View all saved recipes</a></li>
-    <li><a href="/ingredients">View all ingredients</a></li>
-    <li><a href="/tags">View all tags</a></li>
-    <li><a href="/create_recipe">Create a new recipe</a></li>
-    <li><a href="/search_recipes">Search for Recipes: Ingredients Based Search</a></li> -->
-    <ul><a href="/recipes">View all saved recipes</a></ul>
+  </div>
+  <ul></ul>
+  <div class="d-flex justify-content-center">
+  <ul>
+    <li><a href="/recipes">View All Saved Recipes</a></li>
+    <li><a href="/ingredients">View All Ingredients</a></li>
+    <li><a href="/tags">View All Tags</a></li>
+    <li><a href="/create_recipe">Create a New Recipe</a></li>
+    <li><a href="/search_recipes">Search for Recipes: Ingredients Based Search</a></li>
+
+    <!-- <ul><a href="/recipes">View all saved recipes</a></ul>
     <ul><a href="/ingredients">View all ingredients</a></ul>
     <ul><a href="/tags">View all tags</a></ul>
     <ul><a href="/create_recipe">Create a new recipe</a></ul>
-    <ul><a href="/search_recipes">Search for Recipes: Ingredients Based Search</a></ul>
+    <ul><a href="/search_recipes">Search for Recipes: Ingredients Based Search</a></ul> -->
 
-  <!-- </ul> -->
+  </ul>
 </div>
+
 
 {% endblock %}

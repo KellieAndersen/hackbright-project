@@ -4,7 +4,10 @@ h3 {
     font-family: 'Kurale', sans-serif; 
     font-weight: 600;
 }
-h4, 
+h4 {
+    font-family: 'Kurale', sans-serif; 
+    font-weight: 600;
+} 
 h5,
 h6,
 
@@ -39,6 +42,10 @@ a {
     font-weight: 700;
     font-size: 1.1em;
     color: #a87836; 
+}
+navbar-brand {
+    color: #DFD87F;
+    font-family: 'Kurale', sans-serif;
 }
 .feature {
     tezt-align: center;

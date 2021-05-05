@@ -2,12 +2,18 @@
 {% block title %}Search for Recipes Including Ingredients{% endblock %}
 
 {% block body %}
+<ul></ul>
+<div class="d-flex justify-content-around">
   <h1><u>Search for Recipes With Certain Ingredients</u></h1>
+</div>
+<div align="center">
   This search will return all recipes that contain <i>any</i> of the specified ingredients.
+</div>
+
   <form action="/search_for_recipes_with_ing" method="GET">
     
     <p>
-      <div><b>Enter Ingredients You Want to Include:</b> *  Please capitalize ingredient words and separate ingredients with commas </div>
+      <div><h3>Enter Ingredients You Want to Include:</h3> *  Please capitalize ingredient words and separate ingredients with commas </div>
         <textarea name="ingredients" rows="5" cols="60" placeholder="ex: Chicken, Broccoli, Milk, Bacon..." required></textarea>
     </p>
 

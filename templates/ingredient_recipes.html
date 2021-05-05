@@ -2,7 +2,11 @@
 {% block title %}Recipes Including {{ ingredient.ingredient_name }}{% endblock %}
 
 {% block body %}
+<ul></ul>
+<div class="d-flex justify-content-around">
     <h1><u>Recipes Including {{ ingredient.ingredient_name }}</u></h1>
+</div>
+<div class="d-flex justify-content-around">
     <ul>
         {% for recipe in see_recipes %}
             <li>
@@ -13,4 +17,5 @@
             </li>   
         {% endfor %}
     </ul>
+</div>
 {% endblock body %}

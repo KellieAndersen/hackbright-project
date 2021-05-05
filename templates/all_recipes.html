@@ -2,7 +2,14 @@
 {% block title %}All Recipes{% endblock %}
 
 {% block body %}
-    <h1><u>All Recipes</u></h1>
+<ul>
+    
+</ul>
+<div class="d-flex justify-content-center"><h1><u>All Recipes</u></h1></div>
+<ul>
+    
+</ul>
+<div class="d-flex justify-content-around">
     <ul>
         {% for recipe in see_recipes %}
             <li>
@@ -12,4 +19,5 @@
             </li>   
         {% endfor %}
     </ul>
+</div>
 {% endblock body %}

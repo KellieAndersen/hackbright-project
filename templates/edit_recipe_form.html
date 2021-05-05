@@ -2,8 +2,12 @@
 {% block title %}Edit Recipe{% endblock %}
 
 {% block body %}
+<ul></ul>
 <h5><a href="/recipes/{{ recipe.recipe_id }}">Back</a></h5>
+<div class="d-flex justify-content-around">
   <h1><u>Edit Recipe</u></h1>
+</div>
+  <ul></ul>
 
   <form action="/edit_recipe/{{ recipe.recipe_id }}" method="POST">
     <p>

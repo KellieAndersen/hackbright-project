@@ -2,7 +2,11 @@
 {% block title %}Recipes with Tag {{ tag.tag_name }}{% endblock %}
 
 {% block body %}
-    <h1>Recipes with Tag {{ tag.tag_name }}</h1>
+<ul></ul>
+<div class="d-flex justify-content-around">
+    <h1><u>Recipes with Tag {{ tag.tag_name }}</u></h1>
+</div>
+    <div class="d-flex justify-content-around">
     <ul>
         {% for recipe in see_recipes %}
             <li>
@@ -13,4 +17,5 @@
             </li>   
         {% endfor %}
     </ul>
+    </div>
 {% endblock body %}

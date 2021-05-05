@@ -2,21 +2,39 @@
 {% block title %}Search Results{% endblock %}
 
 {% block body %}
+<ul></ul>
+<div class="d-flex justify-content-around">
     <h1><u>Search Results</u></h1>
-    <ul>
+</div>
+    <!-- <ul> -->
         {% for recipe in see_recipes %}
 
             <p>
-            <a href="/recipes/{{ recipe.recipe_id }}"><h4>{{ recipe.recipe_name }}</h4></a> 
+                <div class="d-flex justify-content-evenly">
+                    <ul>
+            <a href="/recipes/{{ recipe.recipe_id }}"><h4>{{ recipe.recipe_name }}</h4></a> </ul>
+                </div>
                     <div>
-                        <i>Includes ingredients:</i>
+                        <div class="d-flex justify-content-start">
+                        <ul><i>Includes ingredients:</i></ul> </div>
+                        
+                        <div class="d-flex justify-content-start">
+                            <ul>
                         {% for ingredient in recipe.ingredients %}
-                            <li>{{ingredient.ingredient_name }}</li>
+                                <ul>
+                            <li align="left">
+                                {{ ingredient.ingredient_name }}
+                                </li>
+                            </ul>
+                                
+                        
                         {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                     <!-- ^^^ should include list of matched ingredients under recipes ^^^ -->
                 </p>
 
         {% endfor %}
-    </ul>
+    <!-- </ul> -->
 {% endblock body %}

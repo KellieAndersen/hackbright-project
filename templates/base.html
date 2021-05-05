@@ -18,7 +18,8 @@
 
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand"><h3>Recipe Rabbit</h3></a>
+        <a class="navbar-brand"><img src="/static/thumbnail.png" width="110" alt="Thumbnail"></a>
+
         <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> -->
@@ -33,6 +34,7 @@
           </div>
         <!-- </div> -->
       </nav>
+      
     {% for msg in get_flashed_messages() %}
 
       <p class="flash-msg">
@@ -44,5 +46,6 @@
 
     {% block after_body %}{% endblock %}
   </div>
+
   </body>
 </html>

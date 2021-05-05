@@ -3,7 +3,10 @@
 {% block title %}{{ recipe.recipe_name }} - Details{% endblock %}
 
 {% block body %}
+<ul></ul>
+<div class="d-flex justify-content-center">
 <h1>{{ recipe.recipe_name }}</h1>
+</div>
 
 <p>
   <h3>Ingredients:</h3>
@@ -19,20 +22,20 @@
 </p>
 {% for note in recipe.notes %}
 <p> 
-  <b>Notes:</b> {{ note.note }} 
+  <h4>Notes:</h4> {{ note.note }} 
 </p>   
 {% endfor %}
 {% for rating in recipe.rating %}
 <p>
-  <b>Rating:</b> {{ rating.rating }}/5
+  <h4>Rating:</h4>{{ rating.rating }}/5
 </p>
 {% endfor %}
 <p>
-  <b>From the Kitchen of:</b> {{ recipe.originator }}
+  <h4>From the Kitchen of:</h4> {{ recipe.originator }}
 </p>
 {% if recipe.tags %}
 <p>  
-  <b>Tag(s):</b>
+  <h4>Tag(s):</h4>
   {% for tag in recipe.tags %}
   <div>
   <li>{{ tag.tag_name }}</li>
