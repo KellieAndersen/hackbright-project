@@ -21,7 +21,8 @@ Dependencies can be found in requirements.txt
 
 ##### Homepage
 Upon opening the app, the homepage will be shown. On the homepage there are five options of things a user can do. These same options are also on the navigation bar which is present on every page.
-![rr_logo](/static/rr_homepage.png)
+
+![homepage](/static/rr_homepage.png)
 
 ##### View All Recipes
 The first option is "View All Saved Recipes". When this is clicked, it will pull up a list of all the recipes that are already stored on in the app in alphabetical order. 
