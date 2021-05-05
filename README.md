@@ -78,4 +78,3 @@ Once the form is submitted, the app will redirect to a list of recipes that cont
 
 
 
-
