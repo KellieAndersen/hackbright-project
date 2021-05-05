@@ -1,0 +1,3 @@
+# Recipe Rabbit
+[logo]: /static/recipe_rabbit_logo
+Recipe Rabbit is a fullstack web application that is more than another recipe app. Recipe Rabbit allows users to create and store recipes, edit recipes, tag recipes, and look up recipes in a vareity of ways. Recipes can be looked up by tag, recipe name, single ingredient, or using multiple ingredients. Don't just use any old recipe, *cook it your way*.
