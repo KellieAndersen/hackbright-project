@@ -114,6 +114,7 @@ A search should also be able to look recipes up based on any or all of the follo
 - Tags
 - Originators
 - Ratings
+
 The search also should allow the user to specify attributes that the do not want in the results (e.g. no beef, no recipes from Mom, no tags about birthdays, etc).
 
 ###### Better Layout for Recipe Details Page
