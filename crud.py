@@ -196,7 +196,7 @@ def add_tag_to_recipe(tag_id, recipe_id):
     return rec.tags
 
 
-###last piece of functionality to find recipes containing multiple specific ingredients
+
 def get_recipes_by_multiple_ing(ingredient_list):
     """Return all recipes that contain any number of specified ingredients"""
     
@@ -208,28 +208,6 @@ def get_recipes_by_multiple_ing(ingredient_list):
     recipe_search_results_set = set(recipe_search_results)
 
     return recipe_search_results_set
-    ### might want to create a dictionary- keys of recipes, values of matched ingredients
-
-
-# def get_recipe_dictionary_by_multiple_ing(ingredient_list):
-#     """Return all recipes that contain any number of specified ingredients"""
-    
-#     recipe_search_results = {} 
-#     for ingredient_id in ingredient_list:
-#         ingred_by_id = get_ingredient_by_id(ingredient_id)
-#         alpha_recipes = alphabetical_recipes()
-#         rec_inc_ingr = []
-
-#         for recipe in alpha_recipes:
-#             if ingred_by_id in recipe.ingredients:
-#                 rec_inc_ingr.append(recipe)
-#                 recipe_search_results['{recipe}'] = ingred_by_id
-
-#         recipe_list = get_recipes_by_ingredient(ingredient_id)
-#         recipe_search_results.extend(recipe_list)
-
-#     return recipe_search_results
-###
 
 
 def string_to_list(string):
@@ -263,7 +241,7 @@ def add_or_create_ing(ing_list, recipe):
             created_ing = create_ingredient(ing)
             add_ingredient_to_recipe(created_ing.ingredient_id, recipe.recipe_id)
 
-###################
+
 def update_recipe(recipe_id, recipe_name, originator, directions):
     """Replace part or all of a recipe"""
 
@@ -282,7 +260,6 @@ def update_recipe(recipe_id, recipe_name, originator, directions):
 def update_rating(recipe_id, new_rating):
     """Replace rating of a recipe"""
 
-    # recipe = get_recipe_by_id(recipe_id)
     rating = Ratings.query.filter(Ratings.recipe_id == recipe_id).first()
 
     rating.rating = new_rating
@@ -295,7 +272,6 @@ def update_rating(recipe_id, new_rating):
 def update_note(recipe_id, new_note):
     """Update existing note"""
 
-    # recipe = get_recipe_by_id(recipe_id)
     note = Notes.query.filter(Notes.recipe_id == recipe_id).first()
 
     note.note = new_note
@@ -306,10 +282,6 @@ def update_note(recipe_id, new_note):
     return note
 
 
-
-# Need a func: looks through ingredients, are there new ones? add them.
-# are there ones missing? remove relationship table bit
-# .... same thing for tags   (use set)
 def update_recipe_ing(recipe_id, ingredients_list):
     """Update the ingredients of a recipe"""
 
@@ -320,7 +292,6 @@ def update_recipe_ing(recipe_id, ingredients_list):
         if ingredient.ingredient_name in ingredients_set:
             ingredients_set.remove(ingredient.ingredient_name)
         else:
-            # delete relationship (object)
             ing_rel_to_remove = Recipe_Ingredient_Relation.query.filter(Recipe_Ingredient_Relation.ingredient_id == ingredient.ingredient_id).first()
             db.session.delete(ing_rel_to_remove)
 
@@ -328,7 +299,6 @@ def update_recipe_ing(recipe_id, ingredients_list):
         new_ing_list = list(ingredients_set)
         add_or_create_ing(new_ing_list, recipe)
 
-    # db.session.add()
     db.session.commit()
     return recipe.ingredients
 
@@ -343,7 +313,6 @@ def update_tags(recipe_id, tags_list):
         if tag.tag_name in tags_set:
             tags_set.remove(tag.tag_name)
         else:
-            # delete relationship (object)
             tag_rel_to_remove = Tag_Recipe_Relation.query.filter(Tag_Recipe_Relation.tag_id == tag.tag_id).first()
             db.session.delete(tag_rel_to_remove)
 

@@ -1,10 +1,5 @@
 """Script to seed a test database"""
 
-# import stuff from model (classes for your tables)
-# write a create_example_data function to make data for your tests 
-# Then in your test.py file, import the create_example_data function from test_seed
-# in your setUp methods, call the create_example_data function
-
 import os
 import json
 from random import choice, randint
@@ -18,9 +13,6 @@ os.system('createdb recipes')
 
 model.connect_to_db(server.app)
 model.db.create_all()
-
-# with open('recipes.json') as f:
-#     recipe_data = json.loads(f.read())
 
 def create_test_data():
 
@@ -60,8 +52,8 @@ def create_test_data():
             if ingred:
                 crud.add_ingredient_to_recipe(ingred.ingredient_id, db_recipe.recipe_id)
             else:
-                ing = crud.create_ingredient(ingredient) ## if statement if ing already in list, skip create
-                crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id) ##   
+                ing = crud.create_ingredient(ingredient)
+                crud.add_ingredient_to_recipe(ing.ingredient_id, db_recipe.recipe_id)  
 
 
         recipes_in_db.append(db_recipe)

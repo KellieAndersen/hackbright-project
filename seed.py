@@ -25,7 +25,6 @@ for recipe in recipe_data:
 
     db_recipe = crud.create_recipe(recipe_name, originator, directions)
 
-## check if there is a note, if recipe[note]....
     if recipe['note']:
         n = recipe['note']
         note = crud.create_note(db_recipe.recipe_id, n)
@@ -45,7 +44,6 @@ for recipe in recipe_data:
                 crud.add_tag_to_recipe(t.tag_id,db_recipe.recipe_id)
 
 
-
     ingredients = recipe['ingredients']
     for ingredient in ingredients:
         ingred = crud.get_ingredient_by_name(ingredient)
@@ -58,23 +56,3 @@ for recipe in recipe_data:
 
     recipes_in_db.append(db_recipe)
  
-
-
-
-
-
-
-
-
-
-
-
-    #  {
-        # "recipe_name": "",
-        # "originator": "",
-        # "ingredients": [""],
-        # "directions": "",
-        # "tags":[""],
-        # "rating": "",
-        # "note": ""
-    # }

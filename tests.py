@@ -50,7 +50,7 @@ class RecipeAppIntegrationTests(unittest.TestCase):
         """Tests to see if the ingredient list page can be reached"""
 
         result = self.client.get("/ingredients")
-        self.assertIn(b"Click an ingredient name to see", result.data)
+        self.assertIn(b"Click an ingredient to see", result.data)
 
 
     def test_tag_list_page(self):
@@ -66,13 +66,13 @@ class RecipeAppIntegrationTests(unittest.TestCase):
         result = self.client.get("/create_recipe")
         self.assertIn(b"separate tags with commas", result.data)
 
-###########
+
     def test_search_page(self):
         """Tests to see if the search page can be reached"""
 
         result = self.client.get("/search_recipes")
         self.assertIn(b"Enter Ingredients You Want", result.data)
-###########
+
 
     def test_recipe_form_submission(self):
         """Test to see if submitting the create recipe form takes the user to the recipe details page"""
@@ -96,12 +96,6 @@ class RecipeAppIntegrationTests(unittest.TestCase):
             "rating":"4"}, follow_redirects = True)
         self.assertIn(b"Tomato", result.data)
         self.assertNotIn(b"Mayo", result.data)
-
-
-    # def test_get_recipes_by_multiple_ing(self):
-
-    #     assert list(get_recipes_by_multiple_ing(["3", "16"])) == ["<The recipe is Grilled Cheese with Bacon, from the kitchen of Lana, recipe_id 2>", "<The recipe is Chicken Broccoli Casserole, from the kitchen of Mom, recipe_id 4>", "<The recipe is Abelskiver, from the kitchen of Mom, recipe_id 1>"]
-    #     # < The recipe is {self.recipe_name}, from the kitchen of {self.originator}, recipe_id {self.recipe_id}>
 
 
 class RecipeAppUnitTests(unittest.TestCase):

@@ -52,5 +52,14 @@
         "tags":["salad", "summer"],
         "rating": "5",
         "note": "Eat immediately. Spinach tends to soak up the dressing after a while which makes it soggy and slimy. Not appealing."
+    },
+    {
+        "recipe_name": "Teriyaki Salmon",
+        "originator": "Pinterest",
+        "ingredients": ["Vegetable Oil", "Sesame Seeds", "Soy Sauce", "Green Onion", "Ginger", "Garlic", "Brown Sugar", "Rice Wine Vinegar", "Sesame Oil", "Cornstarch", "Salmon"],
+        "directions": "Ingredients: 1 tablespoon vegetable oil, 4 salmon filets skinless, 1 clove garlic minced, ½ teaspoon ginger minced, ¼ cup low sodium soy sauce, ⅛ cup water, 2-3 tablespoons brown, 1 tablespoon rice wine vinegar, 1 teaspoon sesame oil, 1 teaspoon cornstarch, 1 tablespoon water, green onions, sesame seeds 1. Add garlic, ginger, soy sauce, 1/8 cup water, brown sugar, rice wine vinegar and sesame oil to a medium bowl. 2. Add half of the marinade to a ziplock bag and the other half to a small saucepan and set aside. Place salmon filets in the ziplock bag and marinate for 30 minutes. 3. Heat oil in a large skillet. Add salmon filets making sure not to overcrowd pan (I had to cook two at a time). Cook 3-4 minutes on each side until desired doneness. 4. Meanwhile heat the reserved marinade in the saucepan and bring to a simmer. Add cornstarch and water to a small bowl and whisk to combine. Slowly whisk in the cornstarch mixture to the marinade and simmer until thickened. 5. Serve immediately with the teriyaki sauce drizzled on top as well as green onions and sesame seeds for garnish, if desired.",
+        "tags":["hot food", "asian", "wild fish"],
+        "rating": "5",
+        "note": "Make sure it's reduced sodium soy sauce, otherwise it doesn't taste right, We always use 3 (or more) Tbsp of the brown sugar. Make sure you use wild caught salmon (even better if you caught it yourself). Farmed fish tastes odd and usually has color added to it which makes it more difficult to cook by sight. Don't use too much ginger! We usually use just a pinch of the powder kind. Suggested to serve with sautéed broccoli over a bed of Jasmine rice."
     }
 ]

@@ -70,7 +70,6 @@ def view_recipes_by_tag(tag_id):
     return render_template('tag_recipes.html', see_recipes=recipes_by_tag, tag=tag)
 
 
-####
 @app.route('/search_recipes')
 def search_for_recipes():
     """Show search form"""
@@ -91,8 +90,6 @@ def view_recipes_with_ingredients():
     recipe_search_results = crud.get_recipes_by_multiple_ing(ing_id_list)
 
     return render_template('ing_recipe_search_results.html', see_recipes=recipe_search_results)
-####
-
 
 
 @app.route('/create_recipe', methods=['POST', 'GET'])
@@ -117,21 +114,16 @@ def create_new_recipe():
 
         ing_list = crud.string_to_list(ingredients)
         crud.add_or_create_ing(ing_list, created_recipe)
-        ###
+
         if tags:
             tag_list = crud.string_to_list(tags)
             crud.add_or_create_tag(tag_list, created_recipe)
-
-        ###
 
         return redirect(f'/recipes/{created_recipe.recipe_id}')
 
     else:
         return render_template('create_recipe.html')
 
-
-
-##### Need to make a replace crud function for all of this.
 
 @app.route('/edit_recipe/<recipe_id>', methods = ['POST', 'GET'])
 def edit_recipe(recipe_id):
@@ -161,8 +153,6 @@ def edit_recipe(recipe_id):
         if tags:
 
             crud.update_tags(edited_recipe.recipe_id, tags)
-
-        ### need a replace recipe func in crud to call
 
         return redirect(f'/recipes/{recipe_id}')
 
